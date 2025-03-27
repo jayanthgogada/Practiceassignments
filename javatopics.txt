@@ -1,0 +1,7043 @@
+
+**************************************************************BACKEND*****************************************************
+
+
+   //constructor overlopading demo
+public class Cuboid1 {
+int l,b; 
+Cuboid1(int p,int q)
+{
+	l=p;
+	b=q;
+}
+Cuboid1(float a,int b)
+{
+	l=(int)a;
+	this.b=b;
+}
+Cuboid1(){}
+void volume()
+{
+	System.out.println(l*b);
+}
+public static void main(String args[])
+{
+Cuboid1 obj=new Cuboid1(2,3);
+obj.volume();
+Cuboid1 obj1=new Cuboid1();
+obj1.volume();
+Cuboid1 obj2=new Cuboid1(2.1f,5);
+obj2.volume();
+}
+}
+-------------------------------------------------------------------------------
+2)Method overloading
+-------------------------------------------------------------------------------
+public class Cuboid1 {
+int l,b;
+void setValues(int p,int q)
+{
+	l=p;
+	b=q;
+}
+int setValues(float a,int b)
+{
+	l=(int)a;
+	this.b=b;
+	return (l*b);
+}
+void setValues(){}
+void volume()
+{
+	System.out.println(l*b);
+}
+public static void main(String args[])
+{
+Cuboid1 obj=new Cuboid1();
+obj.setValues(2,3);
+obj.volume();
+Cuboid1 obj1=new Cuboid1();
+obj1.setValues();
+obj1.volume();
+Cuboid1 obj2=new Cuboid1();
+System.out.println(obj2.setValues(4.1f,6));
+
+}
+}
+
+----------------------------------------
+3.//passing object to method
+-------------------------------------------
+
+public class Cuboid {
+int l,b;
+Cuboid(int a,int b)
+{
+	l=a;
+	this.b=b;
+}
+Cuboid(){}
+Cuboid addObjects(Cuboid obj3,Cuboid obj4)
+{
+	Cuboid temp=new Cuboid();
+	temp.l=obj3.l+obj4.l;
+	temp.b=obj3.b+obj4.b;
+	return temp;
+	
+}
+
+void volume()
+{
+	System.out.println(l*b);
+}
+public static void main(String args[])
+{
+	Cuboid obj=new Cuboid(5,10);
+	Cuboid obj1=new Cuboid(15,20);
+	Cuboid obj2=new Cuboid();
+	Cuboid p=obj2.addObjects(obj,obj1);
+	System.out.println(p.l+" +"+"j"+p.b);
+}
+}
+
+------------------------------------
+
+package com.publicaccess;
+
+public class access
+{
+	private  int x;
+	public void meth()
+	{
+		 int d=20;
+		System.out.println("loacl"+d+"instance :"+x);
+	}
+	public void sayHello()
+	{
+		System.out.println("welcome");
+	}
+}
+------------------------------
+package com.march8demos;
+import java.util.*;
+import com.publicaccess.*;
+public class App {
+
+
+	public static void main(String[] args) {
+	access obj=new access();
+	obj.meth();
+	obj.sayHello();
+
+	}
+
+}
+
+-------------------------------------
+
+package com.march8demos;
+//getter setter demo
+-----------------------------------------------------------
+public class Student {
+private int studentId;
+private String studentName;
+
+	public Student(int studentId, String studentName) {
+	
+	this.studentId = studentId;
+	this.studentName = studentName;
+}
+
+
+	public int getStudentId() {
+		return studentId;
+	}
+
+
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
+
+
+	public String getStudentName() {
+		return studentName;
+	}
+
+
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+
+
+	public static void main(String[] args) {
+		Student s=new Student(10,"Akash");
+		System.out.println(s.getStudentId()+" :"+s.getStudentName());
+
+	}
+
+}
+
+-----------------------------------------------------------------------------------
+GarbageCollector demo
+
+-----------------------------
+
+public class GCDemo {
+void meth()
+{
+	System.out.println("i ma in method");
+}
+public void finalize()
+{
+	System.out.println("deleting object");
+}
+	public static void main(String[] args) {
+	GCDemo obj=new GCDemo();
+	obj.meth();
+	obj=null;
+	System.gc();
+	
+
+	}
+
+}
+----------------------------------------------------
+Arrays
+-----------------------------------
+1)package com.arrays;
+
+import java.util.Scanner;
+
+public class ArrayDemo {
+	public static void main(String ar[])
+	{
+int arr[]=new int[5];
+Scanner s=new Scanner(System.in);
+
+for(int i=0;i<arr.length;i++)
+{
+	System.out.println("enter elemnt for position"+(i+1));
+	arr[i]=s.nextInt();
+}
+System.out.println("displaying array elements");
+for(int i=0;i<arr.length;i++)
+{
+	System.out.println(arr[i]);
+}
+System.out.println("using enhanced for loop");
+for(int g:arr)
+{
+	System.out.println(g);
+}
+}}
+---------------------------------------------------------------------
+creating array of user defined class
+----------------------------------------------------------
+public class Employee {
+private int id;
+private String name;
+private double salary;
+public Employee(int id, String name, double salary) {
+	super();
+	this.id = id;
+	this.name = name;
+	this.salary = salary;
+}
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public double getSalary() {
+	return salary;
+	}
+public void setSalary(double salary) {
+	this.salary = salary;
+}
+public static void main(String args[])
+{
+	Employee obj[]=new Employee[3];
+	obj[0]=new Employee(10,"ann",7000);
+	obj[1]=new Employee(11,"bann",17000);
+	obj[2]=new Employee(12,"kann",27000);
+	for(int i=0;i<obj.length;i++)
+	{
+		System.out.println(obj[i].getName());
+	}
+	System.out.println("using enhanced for loop");
+	for(Employee lokesh:obj )
+		System.out.println(lokesh.getName());
+}
+
+}
+----------------------------------------------------------------
+array of String
+-----------------------------------------
+
+package com.arrays;
+
+public class StringDemo {
+
+	public static void main(String[] args) {
+		//String arr[]= {"akash","surendra","vivek"};
+		String arr[]=new String[3];
+		arr[0]="akash";
+		arr[1]="ujwal";
+		arr[2]="bhanu";
+		for(String ujwal:arr)
+		{
+			System.out.println(ujwal);
+		}
+	}
+
+}
+
+-------------------------------------------------------------
+
+1.Find the Missing Number in an Array
+Given an array of n distinct numbers from 1 to n+1 (with one number missing), find the missing number.
+
+2. Find Duplicate Elements in an Array
+
+3.Given an array, identify all duplicate elements.
+Find the Intersection of Two Arrays
+
+4.Given two arrays, find the common elements present in both.
+Rotate an Array (Cyclic Rotation)
+
+5.Given an array, rotate it right by k positions.
+1️⃣5️⃣ Find Pairs with a Given Sum
+
+6.Given an array and a sum S, find all pairs of numbers that add up to S.
+
+-------------------------------------------------------------
+
+Inheitence
+----------------------------------------------------------
+1 protected demo
+-------------------------------------
+package com.inheritence;
+
+public class ProtectedDemo {
+protected int x=10;
+
+
+}
+package com.inheritence1;
+
+import com.inheritence.ProtectedDemo;
+
+
+public class Main1 extends ProtectedDemo {
+	
+	void meth()
+	{
+		System.out.println(x);
+	}
+	public static void main(String args[])
+	{
+		Main1 obj=new Main1();
+		obj.meth();
+		
+		
+	}
+}
+----------------------------------------------------
+simple inhereitence
+-------------------------------------------------
+package com.inheritence;
+class Rectangle
+{
+	int l,b;
+	void setValuesforRect(int p,int q)
+	{
+		l=p;b=q;
+	}
+}
+public class Cuboid extends Rectangle
+{
+	int h=30;
+	void volume()
+	{
+		System.out.println(l*b*h);
+	}
+public static void main(String args[])
+{
+	Cuboid obj=new Cuboid();
+	obj.setValuesforRect(5, 6);
+	obj.volume();
+}
+}
+-----------------------------------------------
+method overriding
+---------------------------
+package com.inheritence;
+class BaseClass
+{
+	void show()
+	{
+		System.out.println(" i am in super class");
+	}
+}
+
+
+public class SuperDemo extends BaseClass {
+	public void show()
+	{
+		super.show();
+		System.out.println(" i am in sub class");
+	}
+
+	public static void main(String[] args) {
+		SuperDemo obj=new SuperDemo();
+		obj.show();
+
+	}
+
+}
+------------------------------------------------
+Tasks to do:
+Question on Setter and Getter
+-------------------------------------------------
+Student Grade Calculation System
+
+You are required to develop a simple student grade calculation system using Java. Implement a class Student with the following attributes and methods:
+
+id: An integer representing the student ID.
+name: A string representing the student's name.
+marks: An integer array storing marks for multiple subjects.
+average: A floating-point number representing the student's average marks.
+grade: A character representing the student's grade.
+Getter and setter methods for all attributes.
+A calculateAvg() method that computes the average of all subject marks.
+A findGrade() method that assigns a grade based on the following conditions:
+If the average is between 80 and 100 (inclusive), assign grade 'O'.
+If any subject mark is below 50, assign grade 'F'.
+Otherwise, assign grade 'A'.
+Additionally, implement a class StudentMain that:
+
+Accepts user input for id, name, and number of subjects.
+Ensures the number of subjects is a positive integer.
+Accepts marks for each subject and ensures they are positive.
+Calls calculateAvg() and findGrade() methods.
+Displays the student's ID, name, average marks (formatted to two decimal places), and grade.
+Tasks:
+Implement the missing logic to ensure input validation for the number of subjects and marks.
+Test the program by creating a student, setting details, and verifying the grade calculation
+
+2)You are required to develop a Java program that takes input for multiple semesters, records marks for subjects in each semester, and determines the highest mark for each semester. Implement a class HighestMarkPerSem that performs the following tasks:
+
+Accepts the number of semesters from the user.
+For each semester, prompts the user to enter the number of subjects.
+Accepts marks for each subject, ensuring they are within a valid range (0-100).
+If an invalid mark is entered, display an error message and terminate the program.
+Determines the highest mark obtained in each semester.
+Displays the highest mark for each semester.
+-------------------------------------------------------------------------------
+3)Finding Factors of a Number
+
+You are required to develop a Java program that finds and prints all factors of a given integer. Implement a class FindFactor that performs the following tasks:
+
+Accepts an integer input from the user.
+If the input is 0, print "No Factors" and terminate the program.
+Compute and display all factors of the absolute value of the input number.
+The factors should be printed in ascending order and separated by commas.
+-------------------------------------------------------------------------------------------
+4)
+Checking Compatibility of Two Arrays
+
+You are required to develop a Java program that checks whether two arrays are compatible based on the following conditions:
+
+The program should accept two integer arrays from the user.
+If either array has a size less than or equal to zero, print "Invalid array size" and terminate.
+If the sizes of the two arrays are different, print "Arrays are Not Compatible" and terminate.
+If the first array has elements greater than or equal to the corresponding elements in the second array at every index, print "Arrays are Compatible". Otherwise, print "Arrays are Not Compatible".
+---------------------------------------------------------------------------------------
+
+5)Tracking Associate Work Status
+
+You are required to develop a Java program that tracks an associate's work status based on the number of training days completed. Implement a class Associate with the following attributes and methods:
+
+Attributes:
+
+associateId: An integer representing the associate's ID.
+associateName: A string representing the associate's name.
+workStatus: A string representing the associate's current work status.
+Methods:
+
+Getter and setter methods for all attributes.
+trackAssociateStatus(int days): This method determines the associate's work status based on the number of days completed:
+0 to 20 days → "Core skills"
+21 to 40 days → "Advanced modules"
+41 to 60 days → "Project phase"
+More than 60 days → "Deployed in project"
+Additionally, implement a Main class that:
+
+Accepts user input for associateId, associateName, and number of days completed.
+Calls trackAssociateStatus(int days) and prints the associate’s name along with their work status.
+Tasks:
+Modify the program to handle edge cases like negative values for days.
+Enhance input validation to ensure only valid data is accepted.
+
+-----------------------------------------------------------
+
+static Example 1:
+package com.inheritence;
+
+class App
+{
+	int i,j;
+	static int k;
+	static
+	{
+		System.out.println("hello");
+	}
+	static
+	{
+		System.out.println("hello............");
+	}
+	App()
+	{
+		i++;
+		j++;
+		k++;
+		
+	}
+	static void meth()
+	{
+		System.out.println("i am a static method"+" "+k);
+	}
+
+
+	public static void main(String[] args) {
+		App obj1=new App();
+		System.out.println(obj1.i+"  "+obj1.j+" "+k);
+		App obj2=new App();
+		System.out.println(obj2.i+"  "+obj2.j+" "+k);
+		App obj3=new App();
+		System.out.println(obj3.i+"  "+obj3.j+" "+k);
+		meth();
+	}
+
+}
+-------------------------------------------------
+static example 2:
+package com.inheritence;
+
+public class Student {
+int id;
+String name;
+static String college="RVCE"; 
+
+
+
+	public Student(int id, String name) {
+	super();
+	this.id = id;
+	this.name = name;
+}
+void displayDetails()
+{
+	System.out.println(id+" "+name+" "+college);
+}
+
+
+	public static void main(String[] args) {
+		Student s=new Student(10,"Ann");
+		Student s1=new Student(11,"BAnn");
+		Student s2=new Student(12,"KAnn");
+	s.displayDetails();
+	s1.displayDetails();
+	s2.displayDetails();
+		
+	}
+
+}
+---------------------------------
+package com.inheritence;
+
+public class Student {
+int id;
+String name;
+static String college="RVCE"; 
+
+
+
+	public Student(int id, String name) {
+	super();
+	this.id = id;
+	this.name = name;
+}
+void displayDetails()
+{
+	System.out.println(id+" "+name+" "+college);
+}
+
+
+	public static void main(String[] args) {
+		Student s=new Student(10,"Ann");
+		Student s1=new Student(11,"BAnn");
+		Student s2=new Student(12,"KAnn");
+	s.displayDetails();
+	s1.displayDetails();
+	s2.displayDetails();
+		
+	}
+
+}
+-------------------------------------------------------
+Static Demos
+--------------------------------------------------------
+package com.inheritence;
+
+class App
+{
+	int i,j;
+	static int k;
+	static
+	{
+		System.out.println("hello");
+	}
+	static
+	{
+		System.out.println("hello............");
+	}
+	App()
+	{
+		i++;
+		j++;
+		k++;
+		
+	}
+	static void meth()
+	{
+		System.out.println("i am a static method"+" "+k);
+	}
+
+
+	public static void main(String[] args) {
+		App obj1=new App();
+		System.out.println(obj1.i+"  "+obj1.j+" "+k);
+		App obj2=new App();
+		System.out.println(obj2.i+"  "+obj2.j+" "+k);
+		App obj3=new App();
+		System.out.println(obj3.i+"  "+obj3.j+" "+k);
+		meth();
+	}
+
+}
+-----------------------------------------------------
+
+Abstract eg demo
+-----------------------------------
+package com.inheritence;
+
+abstract class Shape1
+{
+	int length=10,breadth=5;
+	 abstract void area(); 
+	void meth() {System.out.println("hello");
+	}
+	
+}
+ class Rect extends Shape1{
+	 void area() {
+		 System.out.println(length*breadth);
+	 }
+	 void meth() {System.out.println("hello i am in rect");
+}}
+ class cuboid  extends Shape1{
+	 int h=5;
+	 void area() {
+		 System.out.println(length*breadth*h);
+	 }
+}
+public class AbstractDemo {
+public static void main(String args[])
+{
+	Shape1 s=new Rect();
+	s.area();
+	s.meth();
+	 s=new cuboid();
+		s.area();
+}
+}
+-------------------------------------------------------------------------
+Abstract class with constructor
+------------------------------------------------------------------
+package com.inheritence;
+abstract class Cuboid3
+{
+	int l,b;
+	Cuboid3(int m,int n)
+	{
+		l=m;b=n;
+	}
+	abstract void area();
+	
+}
+
+
+public class AbstractConstructorDemo extends Cuboid3{
+	int h;
+	AbstractConstructorDemo(int a,int b,int c)
+	{
+		super(a,b);
+		h=c;
+		
+	}
+	void area() {
+		System.out.println(l*b*h);
+	}
+	public static void main(String[] args) {
+	Cuboid3 obj=new 	AbstractConstructorDemo(4,5,6);
+obj.area();
+	}
+
+}
+--------------------------------------------------------------------------------------
+Interface example
+-------------------------------------------------------------------
+package com.inheritence1;
+interface i1
+{
+	int x=15,y=5;
+	void add();
+	void sub();
+}
+interface i2 extends i1
+{
+	void mul();
+	void div();
+}
+
+public class InterfaceDemo implements i2{
+	public void add()
+	{
+		System.out.println(x+y);
+	}
+	public void sub()
+	{
+		System.out.println(x-y);
+	}
+	public void mul()
+	{
+		System.out.println(x*y);
+	}
+	public void div()
+	{
+		System.out.println(x/y);
+	}
+
+	public static void main(String[] args) {
+	  i2 obj=new InterfaceDemo();
+	obj.add();
+	obj.sub();
+	obj.mul();
+obj.div();
+	}
+
+}
+-----------------------------------------------------
+--------------------------------------------------------------------
+String Ref equlaity demo
+----------------------------------
+package com.strings;
+
+public class RefEqualityDemo {
+
+	public static void main(String[] args) {
+		String s="hello";
+		//String s1="hello";
+		String s1=new String("hello");
+		if(s==s1)
+		{
+			System.out.println("ref equality is true");
+		}
+		else
+		{
+			System.out.println("ref equality is false");
+		}
+		
+
+	}
+
+}
+---------------------------------------------------------------------------------
+
+public class ObjectEqualityDemo {
+
+	public static void main(String[] args) {
+		String s="hello";
+		//String s1="hello";
+		String s1=new String("hello");
+		if(s.equals(s1))
+		{
+			System.out.println("obj equality is true");
+		}
+		else
+		{
+			System.out.println("obj equality is false");
+		}
+		
+
+	}
+
+}
+-------------------------------------------------------
+1.Harry's assignment
+-----------------------------------
+Harry has recently learned about strings in his programming classes. He decided to create some interesting strings using the basic concepts.
+Help Harry!
+Your task here is to implement a JAVA code based on the following specifications. Note that your code should match the specifications in a precise manner. Consider default visibility of classes, data fields and methods unless mentioned otherwise. All the methods that you are implementing should be non-static.
+Specification:
+class definitions:
+ class StringPlay:
+  data fields:
+   int convert
+   int max;
+  StringPlay(): Define an empty constructor with public visibility.
+
+ class StringMethods:
+   convertToInt(StringPlay sp, String str):
+    visibility: public
+    return type:int
+   getMax(StringPlay sp, String str, char ch):
+    visibility: public
+    return type:int
+Task:
+class StringPlay 
+- Implement StringPlay class according to the above specifications
+class StringMethods
+- Implement the below methods for this class:
+•	int convertToInt(StringPlay sp, String str): Convert the string str to int, return the int value and assign the value to suitable sp variable(convert). All the strings will contain only numbers.
+•	Example: str = "123" then resultant is 123.
+•	int getMax(StringPlay sp, String str, char ch): Return the total number of char ch present in string str and assign the value to sp variable max and return the same value.
+•	Example: str = "This is good" , ch = 'o' then resultant value = 2
+•	Example: str = "doselect Et le", ch='e' then resultant value = 3
+
+Sample Input
+StringMethods sm = new StringMethods();
+StringPlay sp = new StringPlay();
+sm.getMax(sp,"fgfgfgf",'g')
+sm.convertToInt(sp,"123")
+Sample Output
+3
+123
+--------------------------------------------------------------------------------
+2)Program 2:
+
+DESCRIPTION
+Alice is working in a cybersecurity company. He has given a string that contains some message, that message can be decoded by some operation defined below. After the decode of that message he needs to encode another message to send, so Alice needs your help.
+Your task here is to implement a Java code based on the following specifications. Note that your code should match the specifications in a precise manner. Consider default visibility of classes, data fields, and methods unless mentioned otherwise.
+Specifications:
+ class definition: 
+  class Encryption:
+      decodeMessage(String message):
+         return type: String 
+         visibility: public
+
+      encodeMessage(String message):
+         return type: String 
+         visibility: public
+
+Task:
+class Encryption:
+Implement the below method for this class:
+String decodeMessage(String message): 
+•	Write a code to decode the message.
+•	To get the original message we need to remove all the vowels from the string.
+Refer to the below example for a clear understanding
+str = "oriGinal MessAge" then return "rGnl Mssg".
+String encodeMessage(String message): 
+•	Write a code to encode the message.
+•	To get the encoded message we need to the add vowels in lower case in a circular way ( a->e->i->o->u->a->e->i . . .).
+•	After space, we don't need to add a vowel.
+Refer to the below example for a clear understanding
+str = "QWRT cvbN MnKL" then return "QaWeRiTo cuvabeNi MonuKaLe".
+Note: Message will contain both upper and lower case alphabets.
+
+Sample Input
+Encryption obj = new Encryption();
+----------------------------------------------
+obj.decodeMessage("oriGinal MessAge");
+obj.encodeMessage("QWRT cvbN MnKL");
+Sample Output
+
+rGnl Mssg
+QaWeRiTo cuvabeNi MonuKaLe
+-----------------------------------------------------------------------
+Program 3:
+
+Main class Source should have the functionality to validate the input hexadecimal and decimal colour codes.
+Create two static methods in class ColourCodeValidator as per the below signature
+validateHexCode(String):int
+validateDecimalCode(String):int
+
+Both the methods return 1 for valid codes and -1 for invalid codes. Rules for valid codes are given below
+Hexadecimal code rules
+•	Format: #A1BC23
+•	Must start with "#" symbol
+•	Must contain six characters after #
+•	It may contain alphabets from A-F or digits from 0-9
+Decimal code rules
+•	Format: rgb(x,y,z)
+•	x,y and z are values from 0 to 255 inclusive
+In the main method , do the following
+•	Accept the inputs using Console as shown in the Example section
+•	First input is choice based on which one of the static methods should be invoked
+•	choice 1 is for validating the input hexadecimal colour code
+•	choice 2 is for validating the input decimal colour code
+•	Display Valid code or Invalid code based on the validation result
+•	If the choice is neither 1 or 2, display message "Invalid choice"
+Example
+Sample Input:
+1 #ABCDEF
+
+Expected Output:
+Valid Code
+Sample Input:
+2 rgb(9,99,249)
+
+Expected Output:
+Valid Code
+Sample Input:
+9
+
+Expected Output:
+Invalid choice
+
+---------------------------------------------------------------------------------
+program 4:
+
+DESCRIPTION
+Your task here is to implement a JAVA code based on the following specifications. Note that your code should match the specifications in a precise manner. Consider default visibility of classes, data fields and methods unless mentioned otherwise.
+Specifications:
+class definitions:
+  class Student:
+      data fields:
+        name: String variable
+        usn: String Variable
+        college: String variable
+        cgpa : int variable
+      Constructor to initialize the class variables.
+        public Student(name,usn,college,cgpa)
+      
+  class StudentImplementation:
+      method definitons:
+        Student getStudentInfo(String str): To extract the name,usn,college and cgpa from the String str and return a student object.
+            return type: Student object
+            visibility: public
+            
+        String getStudentSection(Student s): Use the usn of the Student s and return the section he/she is in. If last three digit of student usn is between 001-060 return "A", if usn is between 061-120 return "B" , if usn is between 121-180 return "C" and if usn greater than 180 return "Z".
+            return type: String
+            visibility: public
+
+String manipulation is a tough task and your company wants you to do some string operations and manipulation.
+Suppose you are given a string (example Amit Rai@1PC16CS046-ALU#8):
+•	The part before '@' represents the name of the student.
+•	The part before '-' and after '@' represents the usn of the student.
+•	The part before '#' and after '-' represents the college of the student.
+•	The part after '#' represents the cgpa of the student.
+Tasks:
+•	Implement the Student class according to the specification given.
+•	Implement the StudentImplementation class where you have to implement the following two methods according to the specifications given:
+1.	Student getStudentInfo(String str)
+2.	String getStudentSection(Student s)
+Method Descriptions:
+1. Student getStudentInfo(String str):
+•	takes a String parameter (e.g. Amit Rai@1PC16CS046-ALU#8).
+•	Extract the information from the String str
+•	Create and populate a Student object with the extracted information and return the Student object
+2. String getStudentSection(Student s):
+•	takes a Student object as the parameter.
+•	Use the last three digits of usn of the Student s and return the section he/she is in.
+•	If last three digit of student's usn is between 001-060 return "A", if usn is between 061-120 return "B" , if usn is between 121-180 return "C" and if usn is greater than 180 return "Z".
+
+--------------------------------------------------------------------------------------------------------
+// Class representing a student
+class Student {
+    String name;
+    String usn;
+    String college;
+    int cgpa;
+
+    // Constructor to initialize the student object
+    public Student(String name, String usn, String college, int cgpa) {
+        this.name = name;
+        this.usn = usn;
+        this.college = college;
+        this.cgpa = cgpa;
+    }
+}
+
+// Class for implementing student-related operations
+class StudentImplementation {
+
+    // Method to extract student details from a given string and return a Student object
+    public Student getStudentInfo(String str) {
+        // Splitting the string based on required delimiters
+        String[] parts = str.split("[@#-]");
+
+        // Extracting values
+        String name = parts[0];
+        String usn = parts[1];
+        String college = parts[2];
+        int cgpa = Integer.parseInt(parts[3]);
+
+        // Creating and returning the Student object
+        return new Student(name, usn, college, cgpa);
+    }
+
+    // Method to determine the section of a student based on the last three digits of their USN
+    public String getStudentSection(Student s) {
+        // Extracting the last three digits of the USN
+        String lastThreeDigitsStr = s.usn.substring(s.usn.length() - 3);
+        int lastThreeDigits = Integer.parseInt(lastThreeDigitsStr);
+
+        // Determining the section based on the range
+        if (lastThreeDigits >= 1 && lastThreeDigits <= 60) {
+            return "A";
+        } else if (lastThreeDigits >= 61 && lastThreeDigits <= 120) {
+            return "B";
+        } else if (lastThreeDigits >= 121 && lastThreeDigits <= 180) {
+            return "C";
+        } else {
+            return "Z";
+        }
+    }
+}
+
+// Main class to test the implementation
+public class StudentMain {
+    public static void main(String[] args) {
+        StudentImplementation impl = new StudentImplementation();
+
+        // Sample input
+        String input = "Amit Rai@1PC16CS046-ALU#8";
+
+        // Extract student info
+        Student student = impl.getStudentInfo(input);
+
+        // Get student section
+        String section = impl.getStudentSection(student);
+
+        // Display results
+        System.out.println("Student Name: " + student.name);
+        System.out.println("USN: " + student.usn);
+        System.out.println("College: " + student.college);
+        System.out.println("CGPA: " + student.cgpa);
+        System.out.println("Section: " + section);
+    }
+}
+-----------------------------------------------------------------
+
+//ArithmeticException d
+----------------------------------------
+package com.exceptions;
+
+import java.util.Scanner;
+
+public class AbnormalTermination {
+
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		int a=s.nextInt();
+		try {
+		int d=42/a;
+		System.out.println(d);
+		}
+		catch(ArithmeticException e) {
+			System.out.println(e);
+			
+		}
+		
+		System.out.println("hello");
+	}
+
+}
+-----------------------------------------------------------------------------------------------
+
+----------------------------------------
+2)package com.exceptions;
+
+import java.util.Scanner;
+
+public class AbnormalTermination {
+
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		int a=s.nextInt();
+		try {
+		int d=42/a;
+		System.out.println(d);
+		int arr[]= {1,2,3};
+		System.out.println(arr[4]);
+		}
+		catch(ArithmeticException e) {
+			System.out.println(e);
+			
+		}
+		catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("Array"+e);
+			
+		}
+		
+		System.out.println("hello");
+	}
+
+}
+-------------------------------------------------------------------
+throw demo
+------------------------------------------------------
+package com.exceptions;
+
+public class ThrowDemo {
+static void meth()
+{
+System.out.println("welcome to meth");	
+throw new ArithmeticException("demo");
+}
+public static void main(String args[])
+{
+	meth();
+	System.out.println("hello");
+}
+}
+-----------------------------------------------------------------------------------
+throws Demo
+---------------------------------------------------------
+package com.exceptions;
+
+import java.io.FileNotFoundException;
+
+public class ThrowDemo {
+static void meth()throws ArithmeticException
+{
+System.out.println("welcome to meth");	
+throw new ArithmeticException("demo");
+	
+}
+public static void main(String args[])
+{try {
+	meth();
+}
+	catch(Exception e)
+	{
+		System.out.println(e);
+	}
+	System.out.println("hello");
+}
+}
+---------------------------------------------------------
+import java.util.Scanner;
+
+public class NumberValidator {
+    
+    public static void validateNumber(int num) throws IllegalArgumentException, ArithmeticException {
+        if (num < 0) {
+            throw new IllegalArgumentException("Negative number not allowed!");
+        } else if (num == 0) {
+            throw new ArithmeticException("Zero is not a valid input!");
+        } else {
+            System.out.println("Valid number entered: " + num);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        try {
+            System.out.print("Enter a number: ");
+            int num = scanner.nextInt();
+
+            validateNumber(num);
+            
+        } catch (IllegalArgumentException e) {
+            System.out.println("Exception Caught: " + e.getMessage());
+        } catch (ArithmeticException e) {
+            System.out.println("Exception Caught: " + e.getMessage());
+        } finally {
+            scanner.close();  
+            System.out.println("Program execution completed.");
+        }
+    }
+}
+-----------------------------------------------------------------------
+
+2.Write a Java program that does the following:
+
+Reads a string input from the user.
+If the string is empty, throw an IllegalArgumentException with the message "Input cannot be empty!".
+If the string length is less than 5, throw a RuntimeException with the message "Input must be at least 5 characters long!".
+Otherwise, print "Valid input: <input>".
+Use try, catch, throw, and throws to handle the exceptions properly.
+--------------------------------------------------------------------------
+import java.util.Scanner;
+
+public class StringValidation {
+    public static void validateInput(String input) throws IllegalArgumentException, RuntimeException {
+        if (input.isEmpty()) {
+            throw new IllegalArgumentException("Input cannot be empty!");
+        }
+        if (input.length() < 5) {
+            throw new RuntimeException("Input must be at least 5 characters long!");
+        }
+        System.out.println("Valid input: " + input);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String userInput = scanner.nextLine();
+        
+        try {
+            validateInput(userInput);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Caught IllegalArgumentException: " + e.getMessage());
+        } catch (RuntimeException e) {
+            System.out.println("Caught RuntimeException: " + e.getMessage());
+        } finally {
+            System.out.println("Program execution completed.");
+        }
+        
+        scanner.close();
+    }
+}
+---------------------------------------------------------------------------------
+finally is always executed when a exception is thrown or not.
+---------------------------------------------------------
+package com.exceptions;
+import java.util.*;
+public class FinallyDemo {
+
+	public static void main(String[] args) {
+	Scanner sc=null;
+		try
+		{
+		sc=new Scanner(System.in);
+			int a=sc.nextInt();
+			int d=42/a;
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		finally
+		{
+		sc.close();
+		System.out.println("i am in finally");
+		}
+	}
+
+}
+-------------------------------------------------------------------------
+---------------------------------try with resources demo
+package com.exceptions;
+import java.io.*;
+import java.util.Scanner;
+
+public class TryWithResources {
+    public static void main(String[] args) {
+                try (Scanner scanner = new Scanner(System.in);
+                		FileOutputStream fos=new FileOutputStream("c:/a.txt")) {
+            System.out.print("Enter your name: ");
+            String name = scanner.next();
+            System.out.print("Enter your age: ");
+            int age = scanner.nextInt();
+            
+            System.out.println("Hello, " + name + "! You are " + age + " years old.");
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e);
+        } 
+        
+    }
+}
+----------------------------------------------------
+import java.io.*;
+psvm() throws Exception
+{
+	FileInputStream fi = FileInputStream ("d://a.txt");
+}
+--------------------------------------------------------
+CustomeException
+---------------------------------
+package com.exceptions;
+
+
+
+class InvalidAgeExceptionDemo
+{
+	static void checkAge(int age)
+	{
+		
+		if(age<18)
+		{
+			throw new InvalidAgeException("sorry!!invalid age");
+		}
+		else
+		{
+			System.out.println("valid age");
+		}
+		
+	}
+	public  static void main(String args[])
+	{
+		checkAge(17);
+	}
+			
+	}
+class InvalidAgeException extends RuntimeException {
+	 InvalidAgeException (String s)
+	 {
+		 System.out.println(s);
+	 }
+}
+------------------------------------------------------------------------------------------------------
+package com.collections;
+import java.util.*;
+public class ArrayListDemo {
+
+	public static void main(String[] args) {
+		List l=new ArrayList();
+		
+		l.add(3);
+		l.add(4.1f);
+		l.add("ann");
+		l.add(1, "ben");
+		l.add("ann");
+		l.set(3,"ken");
+		System.out.println(l.contains("ann"));
+	}
+-----------------------------------------------------------------------
+import java.util.*;
+public class ArrayListDemo {
+
+	public static void main(String[] args) {
+		List l=new ArrayList();
+		
+		l.add(3);
+		l.add(4.1f);
+		l.add("ann");
+		l.add(1, "ben");
+		l.add("ann");
+		l.set(3,"ken");
+		//System.out.println(l.contains("ann"));
+		//System.out.println(l);
+		System.out.println("iterating thr' enhanced for loop");
+		for (Object s:l)
+		{
+			System.out.println(s);
+		}
+		System.out.println("using normal forloop");
+		for(int i=0;i<l.size();i++)
+{
+	System.out.println(l.get(i));
+}
+		System.out.println("iterator method");
+		Iterator i1=l.iterator();
+		while(i1.hasNext())
+		{
+			Object o=i1.next();
+			System.out.println(o);
+		}
+	
+	}
+
+}
+-----------------------------------------------------------
+You are required to implement a program that performs basic operations on an ArrayList without using generics. Your task is to:
+
+Create an ArrayList that can store elements of any type (use ArrayList without generics).
+Add the following elements to the list: "Java", 100, 3.14, "Spring", and true.
+Iterate over the list and print each element with its data type.
+Remove the third element from the list.
+Print the list after removal.
+----------------------------------------------------------
+You are required to perform operations on a HashSet without using generics. Your task is to:
+
+Create a HashSet that can store elements of different types (use Set without generics).
+Add the following elements to the set: "Hello", 42, 3.14, true, and "World".
+Iterate over the set and print each element along with its data type.
+Check if the set contains the number 42, and print "42 is present" if found.
+Remove "World" from the set and print the set after removal
+----------------------------------------------------------
+import java.util.*;
+public class GenericsDemo {
+
+	public static void main(String[] args) {
+		List<Integer> l=new ArrayList();
+		l.add(3);
+		l.add(5);
+		l.add(8);
+		for(Integer x:l)
+		{
+			System.out.println(x);
+		}
+	}
+----------------------------------------------------------------------------
+
+import java.util.*;
+class Student
+{
+	private int id;
+	private String name;
+	private String College;
+	public Student(int id, String name, String college) {
+		super();
+		this.id = id;
+		this.name = name;
+		College = college;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCollege() {
+		return College;
+	}
+	public void setCollege(String college) {
+		College = college;
+	}
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", College=" + College + "]";
+	}
+	
+	
+	
+	
+	
+}
+public class GenericsDemo {
+
+	public static void main(String[] args) {
+		List<Student> l=new ArrayList();
+		Student s1=new Student(10,"ann","UVCE");
+		Student s2=new Student(11,"bann","UVCE");
+		Student s3=new Student(12,"kann","UVCE");
+		l.add(s1);l.add(s2);l.add(s3);
+		l.add(new Student(13,"ren","bcdb"));
+		for(Student x:l)
+		{
+			System.out.println(x.getName());
+		}
+	}
+
+}
+--------------------------------------------------------------
+           Collections Framework 
+-----------------------------------------------------
+1.Design a class Book in com.model package containing following private members: 
+	bookID	text
+title	text
+author	text
+category	text
+price	float
+
+Define public Parameterized constructor to initialize Book object. 
+
+
+2.Design a class called BookStore in com.service package which contains an appropriate collection object to store Book   Instances.
+
+Implement the below operations.
+
+1.	addBook(Book b)
+To add a new Book object into the collection.
+
+2.	searchByTitle(String title)
+Search a book based on title and if found, display the details
+
+3.	searchByAuthor(String author)
+Search a book based on author and if found, display the details
+
+4.	displayAll()
+Print the details of all the books
+
+
+3.Create a class BookUtil in package com.bookutil which has the main method.
+
+•	Instantiate the BookStore class
+•	Read data from user for 3 Book objects.
+Perform the below validations
+
+•	Category must be “Science”, “Fiction”, “Technology” or “Others”
+•	Price cannot be negative
+•	bookID must start with ‘B’ and must be of length 4 characters
+
+If any of the validations fail, throw an user defined exception InvalidBookException with appropriate message(As specified in validations above).Declare this exception in com.exception package.
+
+4.Implement below  Operations:
+
+•	For Valid Book,Call the addBook method to add the book objects into the collection
+•	Search the books by title and author
+•	Display all the book details
+--------------------------------------------------------------------------------------------------------------
+import java.util.*;
+class Student
+{
+	private int id;
+	private String name;
+	private String College;
+	public Student(int id, String name, String college) {
+		super();
+		this.id = id;
+		this.name = name;
+		College = college;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getCollege() {
+		return College;
+	}
+	public void setCollege(String college) {
+		College = college;
+	}
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", name=" + name + ", College=" + College + "]";
+	}
+		
+	
+}
+public class GenericsDemo {
+
+	static List<String> displayList(List<Student> list)
+	{
+		List<String> stringList=new ArrayList();
+		for(Student s:list)
+		{
+			stringList.add(s.getName());
+		}
+		return stringList;
+		
+	}
+	public static void main(String[] args) {
+		List<Student> l=new ArrayList();
+		Student s1=new Student(10,"ann","UVCE");
+		Student s2=new Student(11,"bann","UVCE");
+		Student s3=new Student(12,"kann","UVCE");
+		l.add(s1);l.add(s2);l.add(s3);
+		l.add(new Student(13,"ren","bcdb"));
+		List<String> l1=displayList(l);
+		for(String  x:l1)
+		{
+			System.out.println(x);
+		}
+	}
+
+}
+-----------------------------------------------------------------------
+DESCRIPTION
+Are you vaccinated?
+Do you know COVID-19 vaccine introduced in India is effective as any vaccine developed by other countries. Various phases of vaccine trials are undertaken to ensure its safety and efficacy.
+Here is a task for you!
+Complete the classes using the Specifications given below. Consider default visibility of classes, data fields, and methods unless mentioned otherwise.
+Specifications
+class definitions:
+  class Vaccine:
+    data members: 
+       int age
+       float dosage
+      visibility: private
+
+    Vaccine(int age): constructor with public visibility
+    Define getter setters with public visibility 
+
+  class VaccinationCamp:
+    data member:
+     ArrayList<Vaccine> list = new ArrayList<>();
+
+    method definitions:
+      assignVaccine():
+        return type: void
+
+      vaccineInjected():
+        return type: float
+Task
+Class Vaccine
+- define the int variable age.
+- define the float variable dosage.
+-define a constructor and getter setters according to the above specifications.
+Class VaccinationCamp
+- define the ArrayList<Vaccine> variable list.
+Implement the below methods for this class:
+-void assignVaccine():
+•	The dosage of vaccine to be injected into a person is based on age, the guidelines are given below:
+•	If age >=45, dosage = 250.
+•	If age >= 20, dosage = 200.
+•	If age < 20, dosage = 100.
+•	Set the dosage according to the age in list.
+-float vaccineInjected():
+•	Write a code to find the total vaccine dosage required to get all the people vaccinated
+•	Return the total dosage
+Refer to the sample output for clarity
+Sample Input
+VaccinationCamp vc = new VaccinationCamp();
+ vc.list.add(new Vaccine(49));
+ vc.list.add(new Vaccine(26));
+ vc.list.add(new Vaccine(19));
+---------------------------------------------------------- 
+vc.assignVaccine();
+vc.vaccineInjected();
+Sample Output
+550.0
+------------------------------------------------------------------------------
+import java.util.ArrayList;
+
+class Vaccine {
+    private int age;
+    private float dosage;
+    
+    public Vaccine(int age) {
+        this.age = age;
+    }
+    
+    public int getAge() {
+        return age;
+    }
+    
+    public void setAge(int age) {
+        this.age = age;
+    }
+    
+    public float getDosage() {
+        return dosage;
+    }
+    
+    public void setDosage(float dosage) {
+        this.dosage = dosage;
+    }
+}
+
+class VaccinationCamp {
+    ArrayList<Vaccine> list = new ArrayList<>();
+    
+    public void assignVaccine() {
+        for (Vaccine v : list) {
+            if (v.getAge() >= 45) {
+                v.setDosage(250);
+            } else if (v.getAge() >= 20) {
+                v.setDosage(200);
+            } else {
+                v.setDosage(100);
+            }
+        }
+    }
+    
+    public float vaccineInjected() {
+        float totalDosage = 0;
+        for (Vaccine v : list) {
+            totalDosage += v.getDosage();
+        }
+        return totalDosage;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        VaccinationCamp vc = new VaccinationCamp();
+        vc.list.add(new Vaccine(49));
+        vc.list.add(new Vaccine(26));
+        vc.list.add(new Vaccine(19));
+        
+        vc.assignVaccine();
+        System.out.println(vc.vaccineInjected()); // Output: 550.0
+    }
+}
+------------------------------------------------------------------------------------------------------
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class listinteger {
+
+	public static void main(String[] args) {
+		List<Integer> l = Arrays.asList(1,22,324,8,12,44);
+			Collections.sort(l);
+			System.out.println(l);
+	}
+
+}
+-------------------------------------------------------------------
+import java.util.*;
+
+class Student1 implements Comparable<Student1>{  
+int rollno;  
+String name;  
+int age;  
+Student1(int rollno,String name,int age){  
+this.rollno=rollno;  
+this.name=name;  
+this.age=age;  
+}  
+  
+public int compareTo(Student1 st){  
+ return name.compareTo(st.name);
+}
+
+@Override
+public String toString() {
+	return "Student1 [rollno=" + rollno + ", name=" + name + ", age=" + age + "]";
+} 
+
+
+}  
+
+
+
+ class ComparableDemo{  
+public static void main(String args[]){  
+ArrayList<Student1> al=new ArrayList();  
+al.add(new Student1(101,"Vijay",23));  
+al.add(new Student1(106,"Ajay",27));  
+al.add(new Student1(105,"Jai",21));  
+  
+Collections.sort(al);  
+//printing using enhanced forloop
+//for(Student1 st:al){  
+//System.out.println(st.rollno+" "+st.name+" "+st.age);  
+//} 
+//System.out.println("printing the list using iterator in forward direction only");
+//   Iterator<Student1>it=al.iterator();
+//   while(it.hasNext())
+//   {
+//	   Student1 obj=it.next();
+//	   System.out.println(obj);
+//   }
+//   
+System.out.println("traversing list iusing listiterator forwards and backward");
+   ListIterator<Student1> lt=al.listIterator();
+   while(lt.hasNext())
+   {
+	   Student1 obj=lt.next();
+	   System.out.println(obj);
+   }
+   System.out.println("printing backwards");
+   while(lt.hasPrevious())
+   {
+	   Student1 obj=lt.previous();
+	   System.out.println(obj);
+   }
+}  
+} 
+
+-----------------------------------------------------------------------------------------
+import java.util.*;
+class Student12{  
+int rollno;  
+String name;  
+int age;  
+Student12(int rollno,String name,int age){  
+this.rollno=rollno;  
+this.name=name;  
+this.age=age;  
+}  
+}  
+
+class AgeComparator implements Comparator{  
+public int compare(Object o1,Object o2){  
+Student12 s1=(Student12)o1;  
+Student12 s2=(Student12)o2;  
+  
+return s1.age-s2.age; 
+}  
+}  
+
+
+class NameComparator implements Comparator{  
+public int compare(Object o1,Object o2){  
+Student12 s1=(Student12)o1;  
+Student12 s2=(Student12)o2;  
+  
+return s1.name.compareTo(s2.name);  
+}  
+}  
+
+public class ComparatorDemo {
+
+	public static void main(String[] args) {
+		ArrayList al=new ArrayList();  
+		al.add(new Student12(101,"Vijay",23));  
+		al.add(new Student12(106,"Ajay",27));  
+		al.add(new Student12(105,"Jai",21));  
+		  
+		System.out.println("Sorting by Name");  
+		  
+		Collections.sort(al,new NameComparator());  
+		Iterator itr=al.iterator();  
+		while(itr.hasNext()){  
+		Student12 st=(Student12)itr.next();  
+		System.out.println(st.rollno+" "+st.name+" "+st.age);  
+		}  
+		  
+		System.out.println("Sorting by age");  
+		  
+		Collections.sort(al,new AgeComparator());  
+		Iterator itr2=al.iterator();  
+		while(itr2.hasNext()){  
+		Student12 st=(Student12)itr2.next();  
+		System.out.println(st.rollno+" "+st.name+" "+st.age);  
+		}  
+		  
+		  
+		}  
+		}
+//sorting by name and age;
+-----------------------------------------------------------------------------
+import java.util.*;
+public class HashMapDemo {
+
+	public static void main(String[] args) {
+	Map<String,Integer>	m=new HashMap();
+	m.put("ann",123);
+	m.put("bann",1234);
+	m.put("kann",124);
+	m.put("bann",1222);
+//	System.out.println(m.get("kann"));
+//	System.out.println(m.containsKey("bann"));
+	System.out.println("printing using enhanced for loop");
+	for(Map.Entry<String,Integer> p:m.entrySet())
+	{
+		System.out.println(p.getKey()+": "+p.getValue());
+	}
+	System.out.println("printing keys");
+	Set<String> s=m.keySet();
+	for(String g:s)
+	{
+		System.out.println(g);
+	}
+	System.out.println("printing values");
+Collection<Integer>p=m.values();
+for(Integer g:p)
+{
+	System.out.println(g);
+}
+	}
+
+}
+----------------------------------------------------------------------------------------------------------------
+import java.util.*;
+class Person
+{
+	int id;
+	String name;
+	double salary;
+	public Person(int id, String name, double salary) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.salary = salary;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	@Override
+	public String toString() {
+		return "Person [id=" + id + ", name=" + name + ", salary=" + salary + "]";
+	}
+	
+}
+public class HashMapDemo {
+
+	static void displayDetails(Map<Integer,Person> p)
+	{
+		for(Map.Entry<Integer, Person> m:p.entrySet())
+		{
+			System.out.println(m.getKey()+" :"+m.getValue());
+		}
+	}
+	public static void main(String[] args) {
+	Map<Integer,Person> m=new HashMap();
+	Person p1=new Person(10,"ann",7000);
+	Person p2=new Person(11,"bann",17000);
+	Person p3=new Person(12,"kann",27000);
+	m.put(p1.getId(),p1);
+	m.put(p2.getId(),p2);
+	m.put(p3.getId(),p3);
+	displayDetails(m);
+	}}
+----------------------------------------------------------------------------------------------------------------------
+Question:
+You are tasked with developing a Java-based system that allows users to store and retrieve insurance policy details.
+
+The program should accept n policy details from the user, where each policy has a unique policyId and a policyName.
+The policy details should be stored in a TreeMap<Integer, String> where the key is policyId and the value is policyName.
+Implement a method addPolicyDetails(int policyId, String policyName) that adds policy details to the map.
+Implement a method searchBasedOnPolicyType(String policyType) that searches for policies containing the given policy type in their names and returns a list of matching policyIds.
+Finally, display all stored policies in sorted order based on policyId, and allow the user to search for policies by entering a policyType.
+
+eg:
+For example: If the map contains the key and value as:
+	 *  10654 Max Bupa Health Insurance
+	    10321 SBI Health Insurance
+	    20145 IFFCO Tokio Two Wheeler Insurance
+	    20165 New India Assurance Two Wheeler Insurance
+	    10110 Reliance Health Insurance
+		if the policy type is Health the output should be
+		10110
+		10321
+		10654
+
+
+
+import java.util.*;
+
+class InsurancePolicyManager {
+    private TreeMap<Integer, String> policyMap;
+    
+    public InsurancePolicyManager() {
+        policyMap = new TreeMap<>();
+    }
+    
+    public void addPolicyDetails(int policyId, String policyName) {
+        policyMap.put(policyId, policyName);
+    }
+    
+    public List<Integer> searchBasedOnPolicyType(String policyType) {
+        List<Integer> matchingPolicies = new ArrayList<>();
+        for (Map.Entry<Integer, String> entry : policyMap.entrySet()) {
+            if (entry.getValue().toLowerCase().contains(policyType.toLowerCase())) {
+                matchingPolicies.add(entry.getKey());
+            }
+        }
+        Collections.sort(matchingPolicies);
+        return matchingPolicies;
+    }
+    
+    public void displayAllPolicies() {
+        for (Map.Entry<Integer, String> entry : policyMap.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        InsurancePolicyManager manager = new InsurancePolicyManager();
+        
+        System.out.print("Enter number of policies: ");
+        int n = scanner.nextInt();
+        scanner.nextLine();
+        
+        for (int i = 0; i < n; i++) {
+            System.out.print("Enter Policy ID: ");
+            int policyId = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+            System.out.print("Enter Policy Name: ");
+            String policyName = scanner.nextLine();
+            manager.addPolicyDetails(policyId, policyName);
+        }
+        
+        System.out.println("\nStored Policies (Sorted by ID):");
+        manager.displayAllPolicies();
+        
+        System.out.print("\nEnter Policy Type to Search: ");
+        String policyType = scanner.nextLine();
+        
+        List<Integer> result = manager.searchBasedOnPolicyType(policyType);
+        if (result.isEmpty()) {
+            System.out.println("No matching policies found.");
+        } else {
+            System.out.println("Matching Policy IDs:");
+            for (int id : result) {
+                System.out.println(id);
+            }
+        }
+        scanner.close();
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------
+
+interface I1
+{
+	void meth();
+	static void meth2() {
+		System.out.println("i am static method");
+	}
+	default void defaultmethod() {
+		System.out.println("i am in interface");
+	}
+	
+	
+}
+class App implements I1
+{
+	public void meth()
+	{
+		System.out.println("instance method");
+	}
+public void defaultmethod()
+	{
+		System.out.println("overridden default method");
+	}
+}
+public class StaticDefaultInterface {
+
+	public static void main(String[] args) {
+		I1 obj=new App();
+		obj.meth();
+		obj.defaultmethod();
+		I1.meth2();
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------
+Optional In java
+-------------------------
+
+import java.util.Optional;
+
+public class OptionalDemo {
+
+	public static void main(String[] args) {
+		String name=null;
+		Optional<String> s=Optional.ofNullable(name);
+	if(s.isPresent())
+	{
+		System.out.println(s.get());
+	}
+	else
+	{
+		System.out.println("not found");
+	}
+System.out.println("hello");
+
+	}
+
+}
+--------------------------------------------------------------------------
+Optional In java
+-------------------------
+public class OptionalExample {
+    public static void main(String[] args) {
+        // Create an empty Optional
+        Optional<String> emptyOptional = Optional.empty();
+        
+        // Check if the Optional is empty
+        if (emptyOptional.isEmpty()) {
+            System.out.println("The Optional is empty!");
+        } else {
+            System.out.println("The Optional contains a value.");
+        }
+    }
+}
+-----------------------------------------------------------------------------------
+lamda expression
+------------------------------------------------------------------------------------
+interface i1
+{
+	void meth(int a,int b);
+
+}
+/*
+class A implements i1
+{
+	public void meth()
+	{
+		System.out.println("hello");
+	}
+}
+*/
+public class LambdaExpression {
+
+	public static void main(String[] args) {
+		/*i1 obj=new i1()
+				{
+			public void meth()
+			{
+				System.out.println("hello");
+			}};*/
+		i1 obj=(  m, n)->	System.out.println("hello"+(m+n));
+		
+			
+		obj.meth(3,4);
+
+	}
+
+}
+------------------------------------------------------------------------------------------------------
+interface i1
+{
+
+	int meth(int x,int y);
+	
+
+}
+public class LambdaExpression {
+
+	public static void main(String[] args) {
+		
+		i1 obj=(  m, n)->	{
+			m++;n++;
+			return(m+n);
+		};
+			
+		System.out.println(obj.meth(13,14));
+
+	}
+
+}
+--------------------------------------------------------------
+interface i1
+{
+
+	int meth(int x,int y);
+	
+
+}
+public class LambdaExpression {
+
+	public static void main(String[] args) {
+		
+		i1 obj=(  m, n)->	{
+			if(m>n){
+	system.out.println("m is greater than n")
+		}else{
+		system.out.println("n is greater than m")
+}
+			
+
+			return(m,n);
+		};
+			
+		System.out.println(obj.meth(13,14));
+
+	}
+
+}
+---------------------------------------------------------------------
+import java.util.function.*;
+
+public class BuiltinFunctionalInterfaceDemo {
+
+	public static void main(String[] args) {
+/*		Function<String,Integer> fun=(a)->a.length();
+System.out.println(fun.apply("hello"));
+
+Function<Integer,Double> f=(x)->(double)x*x;
+System.out.println(f.apply(3));
+Supplier<String> s=()->"hello wold";
+System.out.println(s.get());
+*/
+Predicate<Integer> isEven = (num) -> num % 2 == 0;
+
+
+System.out.println(isEven.test(4)); 
+System.out.println(isEven.test(7)); 
+
+	}
+---------------------------------------------------------------------
+Following are the Classes required for this Application
+
+1.Restaurent
+a. Add getter/setter methods
+b.Add Constructor for this class
+c.Overide toString method also
+
+data members of this class
+•	String name;
+•	String location;
+•	String cuisine; 
+•	String rating;
+
+Constructor Syntax: for Participants coding convience and understanding 
+public Restaurent(String name, String location, String cuisine,String rating) {}
+
+
+2.DAOLayer
+methods in this class
+ Restaurent searchRestaurent( ArrayList<Restaurent> contacts,String info)
+returns the restaurent information searching for,this method takes 2 parameters ,the first paramter holds data of Restaurent to be stored and the second parameter holds the name of the restaurent to be searched
+
+
+ void addRestaurent(ArrayList<Restaurent> al)
+This Method is used to Store the Restaurent Details,and also prints the stored Restaurent Details,this method should use a Iterator to iterate over the collection and print the details has mentioned in Sample Output 1:
+
+3.Source: This class should contain the method which is important for the tool,for execution of ur application,this class would be already available in the tool's coding template.
+
+
+Note: ----> Two Restaurent names should be taken has input for Sample Input 1
+
+Sample Input 1:
+1 ------>Input Choice or Option( should be int)
+NH8 ------>Restaurent Name
+Indiranagar ------->location
+Indian ------> cuisine
+3 ------> Rating
+Adigas ------>Restaurent Name
+Indiranagar ------->location
+Indian ------> cuisine
+4 ------> Rating
+
+Sample Output 1:
+Name:NH8
+Location:Indiranagar
+Cuisine:Indian
+Rating:3
+Name:Adigas
+Location:Indiranagar
+Cuisine:Indian
+Rating:4
+
+
+Sample Input 2:
+2 ------>Input Choice or Option( should be int)
+NH8 ------>Restaurent Name
+Indiranagar ------->location
+Indian ------> cuisine
+3 ------->Rating
+Adigas ------>Restaurent Name
+Indiranagar ------->location
+Indian ------> cuisine
+4 -------->Rating
+Adigas -------> Input for Restaurent Name to be searched
+
+
+Sample Output 2:
+Found:Name=Adigas,Location=Indiranagar,Cuisine=Indian,Rating=4
+
+----------------------------------------------------------------------------------------
+DESCRIPTION
+Amit is a government employee. Indian government provides scholarships to college students on a performance basis. Amit has been given the responsibility to assign scholarships based on student percentage and find the total amount of scholarship.
+Help Amit to complete the classes using the Specifications given below. Consider default visibility of classes, data fields, and methods unless mentioned otherwise.
+Specifications
+class definitions:
+  class Student:
+    data members: 
+       String name
+       String collegeName
+       float percentage
+       float scholarship
+      visibility: private
+
+    (name, collegeName, percentage): constructor with public visibility
+    Define getter setters with public visibility
+
+  class Portal:
+    data member:
+       ArrayList<Student> studentList
+
+    method definitions:
+      assignScholarship():
+        return type: void
+
+      totalScholarship():
+        return type: float
+
+      totalMaxScholarshipOfCollege():
+        return type: String  
+Task
+Class Student
+- define the String variable name.
+- define the String variable collegeName.
+- define the float variable percentage.
+- define the float variable scholarship.
+-define a constructor and getter setters according to the above specifications.
+Class Scholarship
+- define the ArrayList<Student> variable studentList.
+Implement the below methods for this class:
+-void assignScholarship():
+•	The scholarship is going to be assigned based on the percentage given below:
+•	If percentage >=91, scholarship = 10000.
+•	If percentage >= 81, scholarship = 5000.
+•	If percentage < 81, scholarship = 0.
+•	Set the scholarship according to the percentage in studentList.
+-float tolatScholarship():
+•	Write a code to find the total scholarship going to be paid by the government.
+•	Return the total scholarship.
+Example:
+studentList = [{"Steve", "IIT", 89, 5000}, {"Bob", "NIT", 94, 10000}, {"Alice", "Abcd", 59, 0}] , totalScholarship = 15000.
+-String tolatMaxScholarshipOfCollege():
+•	Write a code to find the total scholarship of all the colleges and return the college name with the maximum scholarship.
+Example:
+studentList = [{"Steve", "IIT", 89, 5000}, {"Bob", "NIT", 94, 10000}, {"Alice", "NIT", 85, 5000}] then the collegeName = "NIT".
+Sample Input
+Portal obj = new Portal();
+obj.studentList.add(new Student("Steve", "IIT", 89));
+obj.studentList.add(new Student("Bob", "NIT", 94));
+obj.studentList.add(new Student("Alice", "Abcd", 59));
+------------------------------------------------------------
+obj.assignScholarship();
+obj.totalScholarship();
+obj.totalMaxScholarshipOfCollege();
+Sample Output
+15000.0
+NIT
+----------------------------------------------------------------------------------------------------------
+
+import java.util.function.*;;
+public class StaticMethRef 
+{
+	static int  meth(int x,int y)
+	{
+		return x+y;
+		
+	}
+
+	public static void main(String[] args) {
+		//using lambda expression
+		Function<Integer,Double> fun=(n)-> Math.sqrt(n);
+		System.out.println(fun.apply(4));
+		
+		//using method referenece
+		Function<Integer,Double> fun1= Math::sqrt;
+		System.out.println(fun1.apply(4));
+		
+		
+		//using lambda expression
+		BiFunction<Integer,Integer,Integer> fun2=(a,b)->StaticMethRef.meth(a, b);
+		System.out.println(fun2.apply(3, 4));
+		
+		//using method referenece
+		BiFunction<Integer,Integer,Integer> fun3=StaticMethRef::meth;
+		System.out.println(fun3.apply(3, 4));
+
+	
+	}
+
+}
+---------------------------------------------------------------------------------------
+package com.MethodReference;
+
+interface inter
+{
+	public void show(String msg);
+	
+}
+
+class app12
+{
+	public void disp(String msg)
+	{
+		System.out.println(msg.toUpperCase());
+	}
+	public void disp(String msg,String f)
+	{
+		System.out.println(msg.toLowerCase()+" "+f.toLowerCase());
+	}
+}
+public class InstanceMethodReference {
+
+	public static void main(String[] args) {
+	//using lambda expression
+app12 obj=new app12();
+/*
+inter obj1=(msg)-> obj.disp(msg);
+obj1.show("hello");
+*/
+//using method reference
+inter obj2=obj::disp;
+obj2.show("HELLO");
+
+	}
+
+}
+------------------------------------------------------------------------------------------------------------------
+import java.util.*;
+import java.util.stream.*;
+
+public class StreamDemo1 {
+public static void main(String args[])
+{
+	List<Integer> l=Arrays.asList(4,5,6,7,8);
+	//Stream<Integer>s=l.stream();
+	//s.forEach(x->System.out.println(x));
+	//s.forEach(System.out::println);
+//	l.stream().forEach(x->System.out.println(x));
+//	l.stream().forEach(System.out::println);
+	int s=l.stream().filter(x->x>4).mapToInt(x->x).sum();
+	System.out.println("sum is"+s);
+	
+}
+}
+--------------------------------------------------------------------------------------------------------------------
+Stream<String> l4 = Stream.of("java","python","jangree");
+		System.out.println(l4.noneMatch(x->x.contains("e")));
+		System.out.println(l4.anyMatch(x->x.contains("e")));
+		System.out.println(l4.allMatch(x->x.contains("e")));   --------------------->only one at time
+-----------------------------------------------------------------------------------------------------------------
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+class Empl {
+    int id;
+    String name;
+
+    Empl(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+}
+
+public class ListToMap {
+    public static void main(String[] args) {
+        List<Empl> employees = Arrays.asList(
+            new Empl(1, "John"),
+            new Empl(2, "Jane"),
+            new Empl(3, "Jack")
+        );
+
+
+        Map<Integer, String> employeeMap = employees.stream()
+            .collect(Collectors.toMap(emp -> emp.id, emp -> emp.name));
+
+        System.out.println(employeeMap);
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------
+import java.util.*;
+import java.util.stream.*;
+class empl{
+	int id;
+	String name;
+	
+	
+	public empl(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	
+	
+}
+
+public class listinteger {
+public static void main(String[] args) {
+List<empl> employees = Arrays.asList(
+			new empl(1, "john"),
+			new empl(1, "john"),
+			new empl(1, "john")
+			
+				);
+		
+		Map<Integer, String> employeeMap = employees.stream().collect(Collectors.toMap(emp->emp.id, emp->emp.name));
+		System.out.println(employeeMap);
+
+		}
+
+	}
+--------------------------------------------------------------------------------------------------------------
+List<Integer> l = Arrays.asList(1,2,3,4,5,6,7,8);
+
+system.out.println(l.stream().min(Integer::compare).get());
+
+system.out.println(l.stream().max(Integer::compare).get());
+
+---------------------------------------------------------------------------------------------------------------
+
+package com.unext.streams;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+
+class Employee {
+    private String name;
+    private int salary;
+
+    public Employee(String name, int salary) {
+        this.name = name;
+        this.salary = salary;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+	@Override
+	public String toString() {
+		return "Employee [name=" + name + ", salary=" + salary + "]";
+	} 
+}
+
+public class EmployeeMaxMin {
+    public static void main(String[] args) {
+        List<Employee> employees = Arrays.asList(
+            new Employee("Alice", 70000),
+            new Employee("Bob", 85000),
+            new Employee("Charlie", 65000),
+            new Employee("David", 90000),
+            new Employee("Eve", 72000)
+        );
+        
+        Optional<Employee> highestPaid = employees.stream()
+                .max((e1, e2) -> e1.getSalary() - e2.getSalary());
+
+        Optional<Employee> lowestPaid = employees.stream()
+                .min((e1, e2) -> e1.getSalary() - e2.getSalary());
+
+System.out.println(highestPaid.get());
+System.out.println(lowestPaid.get());
+
+       
+    
+
+        // Find the highest-paid employee
+        Optional<Employee> highestPaid1 = employees.stream()
+                .max(Comparator.comparingInt(Employee::getSalary));
+
+        // Find the lowest-paid employee
+        Optional<Employee> lowestPaid1 = employees.stream()
+                .min(Comparator.comparingInt(Employee::getSalary));
+
+        // Print results
+        System.out.println("Highest Paid: " + highestPaid1.map(Employee::getName).orElse("No employees"));
+        System.out.println("Lowest Paid: " + lowestPaid1.map(Employee::getName).orElse("No employees"));
+  
+   
+}
+}
+
+----------------------------------------------------------------------------------------------------------------
+
+package com.unext.streams;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import com.collection.Employee;
+
+class Employee1
+{
+	int id;
+	String name;
+	long salary;
+	public Employee1(int id, String name, long salary) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.salary = salary;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public long getSalary() {
+		return salary;
+	}
+	public void setSalary(long salary) {
+		this.salary = salary;
+	}
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", salary=" + salary + "]";
+	}
+	
+	
+}
+
+public class EmployeeSorting {
+
+	public static void main(String[] args) {
+		Employee1 obj1=new Employee1(10,"ann",4000L);
+		Employee1 obj2=new Employee1(11,"bann",24000L);
+		Employee1 obj3=new Employee1(12,"cann",14000L);
+		Employee1 obj4=new Employee1(13,"dann",34000L);
+		
+		List<Employee1> list=new ArrayList();
+		list.add(obj1);
+		list.add(obj2);
+		list.add(obj3);
+		list.add(obj4);
+//		List<String> l1=Arrays.asList("ann","beeenu","jeenu");
+//		Map<String,Integer>m=l1.stream().collect(Collectors.toMap(String::new,String::length));
+//		for(Map.Entry<String,Integer > m1:m.entrySet())
+//		{
+//			System.out.println(m1.getKey()+"  "+m1.getValue());
+//		}
+		
+		
+	System.out.println("sorting by anonymous class on salary");
+	list.stream().sorted(new Comparator<Employee1>() {
+		public int compare(Employee1 o1,Employee1 o2)
+		{
+			return (int)(o1.getSalary()-o2.getSalary());
+			
+		}
+	}).forEach(System.out::println);
+	
+	list.stream().sorted(new Comparator<Employee1>() {
+		
+		public int compare(Employee1 e1,Employee1 e2)
+		{
+			return(int)(e1.getSalary()-e2.getSalary());
+		}
+		
+	}).forEach(System.out::println);
+	System.out.println("sorting by anonymous class on name");
+	list.stream().sorted(new Comparator<Employee1>() {
+		public int compare(Employee1 o1,Employee1 o2)
+		{
+			return (int)(o1.getName().compareTo(o2.getName()));
+			
+		}
+	}).forEach(System.out::println);
+	
+	
+	System.out.println("sorting on salary by lambda expression");
+	
+	list.stream().sorted(
+		( o1, o2)->
+		{
+			return (int)(o1.getSalary()-o2.getSalary());
+			
+		}
+	).forEach(System.out::println);
+	list.stream().sorted((o1,o2)->
+	{
+		return (int)(o1.getName().compareTo(o2.getName()));
+	}
+			).forEach(System.out::println);
+	
+		
+		Stream<Employee1>obj=list.stream();
+		obj.sorted(Comparator.comparingLong(Employee1::getSalary).reversed()).forEach(System.out::println);
+	System.out.println("sorting on name by method reference");
+	list.stream().sorted(Comparator.comparing(Employee1::getName).reversed()).forEach(System.out::println);
+		
+				
+		
+			Employee1 e=list.stream().filter(x->x.getSalary()>10000).findAny().get();
+	long l=list.stream().filter(x->x.getSalary()>20000).map(x->x.getSalary()+3000).count();
+	System.out.println(e);
+	System.out.println(l);
+	Optional<Employee1>  e4=list.stream().min
+			(Comparator.comparingLong(Employee1::getSalary));
+	if(e4.isPresent())
+	{
+		Employee1 obj31=e4.get();
+		System.out.println("lowest paid emp"+obj31);
+	}
+Optional<Employee1> l2=	list.stream().max(Comparator.comparingLong(Employee1::getSalary));
+	
+	}
+	*/
+	}
+}
+
+
+-------------------------------------------------------------------------------------------------------------
+package com.datetimeapi;
+import java.time.LocalDate;
+
+public class LocalDateExample {
+    public static void main(String[] args) {
+        // Get the current date
+        LocalDate today = LocalDate.now();
+        System.out.println("Today's Date: " + today);
+
+       // Create a specific date
+        LocalDate specificDate = LocalDate.of(2023, 10, 15);
+        System.out.println("Specific Date: " + specificDate);
+
+        // Add days, months, years
+        LocalDate futureDate = today.plusDays(10);
+        System.out.println("Future Date (10 days later): " + futureDate);
+
+        // Subtract days
+        LocalDate pastDate = today.minusWeeks(2);
+        System.out.println("Past Date (2 weeks ago): " + pastDate);
+/*
+        // Get day of the week and day of the year
+        System.out.println("Day of the week: " + today.getDayOfWeek());
+        System.out.println("Day of the year: " + today.getDayOfYear());
+
+        // Check if a year is a leap year
+        System.out.println("Is this a leap year? " + today.isLeapYear());
+  */
+    }
+}
+-----------------------------------------------------------------------------------------------------------
+package com.datetimeapi;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+public class SafeStringToLocalDate {
+	
+	    public static void main(String[] args) {
+	        String dateStr = "10-03-2025"; // Expected format: dd/MM/yyyy
+
+	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+	        try {
+	            LocalDate localDate = LocalDate.parse(dateStr, formatter);
+	            System.out.println("Converted LocalDate: " + localDate);
+	        } catch (DateTimeParseException e) {
+	            System.out.println("Invalid date format: " + e.getMessage());
+	        }
+	    }
+}
+
+------------------------------------------------------------------------------------------------------------------------------
+Author Of Books
+•	subject Coding
+•	casino 100 points
+DESCRIPTION
+Your task here is to implement a Java code based on the following specifications. Note that your code should match the specifications in a precise manner. Consider default visibility of classes, data fields, and methods unless mentioned otherwise.
+Specifications:
+class Author
+  data members:
+   firstName: String
+   lastName: String
+
+  Define a constructor with public visibility
+  Define getter setters with public visibility
+  toString() method has been implemented for you 
+
+class Book
+   data members:
+    title: String
+    Author author
+
+ Define a constructor with public visibility
+ Define getter setters with public visibility
+ toString() method has been implemented for you
+
+class BookImplementation:
+ method definition:
+  firstNameOfAuthors(Author... authors):
+   return type: List<String>
+   visibility: public
+
+  titlesOf(Book... books):
+   return type: List<String>
+   visibility: public
+Task:
+class Author:
+- define the String variable firstName
+- define the String variable lastName
+-define a constructor and getter setters according to the above specifications
+-toString() method has been implemented for you as a part of the code stub
+class Book:
+- define the String variable title
+-define a constructor and getter setters according to the above specifications
+-toString() method has been implemented for you as a part of the code stub
+class BookImplementation:
+Implement the below method for this class using in Stream API:
+•	List<String> firstNameOfAuthors(Author... authors):
+fetch the first name of Author from a list of authors and return it
+•	List<String> titlesOf(Book... books):
+return the titles from a list of books
+Sample Input
+Author joshuaBloch = new Author("Joshua", "Bloch");
+Author brianGoetz = new Author("Brian", "Goetz");
+Author barryBurd = new Author("Barry", "Burd");
+
+Book Java1 = new Book("Effective Java", joshuaBloch);
+Book Java2 = new Book("Java Concurrency In Practice", brianGoetz);
+Book Java3 = new Book("Java For Dummies", barryBurd);
+----------------------------------------------------------
+Java1, Java2, Java3
+//Input for first method
+joshuaBloch, brianGoetz, barryBurd
+//Input for second method
+Sample Output
+[Effective Java, Java Concurrency In Practice, Java For Dummies]
+[Joshua, Brian, Barry]
+
+---------------------------------------------------------------------------------------------------------------------
+
+public class StringAPIExample {
+    public static void main(String[] args) {
+        String text = " hello world   ";
+
+        System.out.println("isBlank: " + text.isBlank()); 
+        System.out.println("strip: '" + text.strip() + "'"); 
+        System.out.println("repeat: " + "sundaram".repeat(3)); 
+        System.out.println("lines: " + "Line1\nLine2\nLine3".lines().count()); 
+    }
+}
+----------------------------------------------------------------------------------------------------------------------------
+
+import java.util.*;
+public class ListToArray{
+    public static void main(String[] args) {
+        List<String> list = List.of("Apple", "Banana", "Cherry");
+
+        String[] array = list.toArray(String[]::new);
+        for (String fruit : array) {
+            System.out.println(fruit);
+        }
+    }
+}
+--------------------------------------------------------------------------------------------------------
+
+import java.util.List;
+import java.util.function.Predicate;
+
+public class PredicateNot {
+    public static void main(String[] args) {
+        List<String> names = List.of("Alice", "  ", "Bob", "", "Charlie");
+
+        names.stream()
+                .filter(Predicate.not(String::isBlank))
+                .forEach(System.out::println);
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------------
+
+package com.jdbc;
+
+import java.sql.*;
+
+import com.daoconnection.DBConnection;
+
+public class Demo1 {
+
+	public static void main(String[] args) {
+		try {
+			
+	Connection con=	DBConnection.getConnection();	
+		
+Statement st=con.createStatement();
+ResultSet rs=st.executeQuery("select * from emp1");
+while(rs.next())
+{
+	System.out.println(rs.getInt(1)+" "+rs.getString(2));
+}
+
+	}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+
+}
+}
+--------------------------------------
+package com.daoconnection;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBConnection {
+public static Connection getConnection()
+{
+	Connection con=null;
+
+	try {
+	Class.forName("org.postgresql.Driver");
+	con=DriverManager.getConnection("jdbc:postgresql://localhost/sundaram","postgres","Shreemb2004r");
+}
+	catch(Exception e)
+	{
+		System.out.println(e);
+	}
+	return con;
+}}
+----------------------------------------------------------------------------------------------------
+======================================================================================================
+****
+
+package com.arrayname;import java.sql.*;
+
+public class connection {
+
+    public static void main(String[] args) {
+
+        try{
+            //Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            //Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","Vikram@9849");
+        	Connection con = DriverManager.getConnection("jdbc:postgresql://localhost/sundaram","postgres","Jaya@1234");
+
+            Statement smt = con.createStatement();
+
+            ResultSet rs=smt.executeQuery("select * from Persons");
+            
+            while(rs.next()){
+                System.out.println(rs.getInt(1)+" "+rs.getString(2)+rs.getString(3)+rs.getString(4)+rs.getString(5));
+            }
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+
+||
+|
+|
+
+------------------------
+
+preparestatement par = con.PrepareStatement("Select * from emp1 where id=?");
+------------------
+
+Scanner s = new Scanner(System.in);
+---------------------------------------------------
+
+package com.jdbc;
+
+import java.sql.*;
+import java.util.Scanner;
+
+import com.daoconnection.DBConnection;
+
+public class Demo1 {
+
+	public static void main(String[] args) {
+		try {
+			
+	Connection con=	DBConnection.getConnection();	
+		
+//Statement st=con.createStatement();
+Scanner s=new Scanner(System.in);
+int d=s.nextInt();;
+PreparedStatement ps=con.prepareStatement("select * from emp1 where id=?");
+ps.setInt(1, d);
+ResultSet rs=ps.executeQuery();
+while(rs.next())
+{
+	System.out.println(rs.getInt(1)+" "+rs.getString(2));
+}
+
+	}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+
+}
+}
+
+---------------------------------------------------------------------------------------
+=============================================================================================
+
+package com.jdbc;
+package com.jdbc;
+
+import java.sql.*;
+import java.util.Scanner;
+
+import com.daoconnection.DBConnection;
+
+public class Demo1 {
+
+	public static void main(String[] args) {
+		try {
+			
+	Connection con=	DBConnection.getConnection();	
+		
+//Statement st=con.createStatement();
+Scanner s=new Scanner(System.in);
+int d=s.nextInt();
+String s2=s.next();
+String sql="insert into emp1 values(?,?)";
+PreparedStatement ps=con.prepareStatement(sql);
+ps.setInt(1, d);
+ps.setString(2,s2);
+int d1=ps.executeUpdate();
+if(d1>0)
+{
+	System.out.println("1 row inserted");
+}
+
+	}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+
+}
+}
+
+---------------------------------------------------------------------------------------
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+class DBConnection {
+    public static Connection getConnection() {
+        Connection con = null;
+        try {
+            // Load JDBC Driver (if required for your database)
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establish connection (update with your DB credentials)
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/your_database", "your_username", "your_password");
+        } catch (Exception e) {
+            System.out.println("Connection failed: " + e.getMessage());
+        }
+        return con;
+    }
+}
+
+public class dbConnection {
+    public static void main(String[] args) {
+        try {
+            Connection con = DBConnection.getConnection();
+            if (con == null) {
+                System.out.println("Failed to connect to the database.");
+                return;
+            }
+
+            Scanner S = new Scanner(System.in);
+            System.out.print("Enter ID: ");
+            int d = S.nextInt();
+            System.out.print("Enter Name: ");
+            String S2 = S.next();
+
+            // Correct SQL syntax
+            String sql = "INSERT INTO emp1 VALUES(?, ?)";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, d);
+            ps.setString(2, S2);
+
+            int d1 = ps.executeUpdate();
+            if (d1 > 0) {
+                System.out.println("1 row inserted");
+            }
+
+            // Close resources
+            ps.close();
+            con.close();
+            S.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+-----------------------------------------------------------------------------------
+package yourpackage; // Remove if not using a package
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.util.Scanner;
+
+public class DBConnection {
+    public static Connection getConnection() {
+        Connection con = null;
+        try {
+            // Load JDBC Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establish connection (update with your database details)
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/your_database", "your_username", "your_password");
+        } catch (Exception e) {
+            System.out.println("Connection failed: " + e.getMessage());
+        }
+        return con;
+    }
+
+    public static void main(String[] args) {
+        try {
+            Connection con = getConnection();
+            if (con == null) {
+                System.out.println("Failed to connect to the database.");
+                return;
+            }
+
+            Scanner S = new Scanner(System.in);
+            System.out.print("Enter ID: ");
+            int d = S.nextInt();
+            System.out.print("Enter Name: ");
+            String S2 = S.next();
+
+            String sql = "INSERT INTO emp1 VALUES(?, ?)";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, d);
+            ps.setString(2, S2);
+
+            int d1 = ps.executeUpdate();
+            if (d1 > 0) {
+                System.out.println("1 row inserted");
+            }
+
+            ps.close();
+            con.close();
+            S.close();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+package com.dao;
+
+import com.connection.DBConnection;
+import com.model.Student;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+
+public class ServiceDao {
+
+    public void insertRecords(List<Student> list) throws SQLException {
+
+        Connection con = DBConnection.getConnection();
+
+        String query = "insert into hr.student(id,name,dob) values(?,?,?)";
+        PreparedStatement prepared = con.prepareStatement(query);
+
+        int rowEffected = 0;
+        for(Student s: list)
+        {
+            prepared.setInt(1,s.getId());
+            prepared.setString(2,s.getName());
+            prepared.setDate(3, Date.valueOf(s.getDob()));
+
+            rowEffected = prepared.executeUpdate();
+        }
+
+        
+
+        if(rowEffected > 0)
+        {
+            System.out.println("rows inserted successfully");
+        }
+    }
+    
+   
+
+}
+
+
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+
+    public static void main(String[] args) throws SQLException {
+
+        Student s1 = new Student(101,"Ram", LocalDate.parse(("2002-10-23")));
+        Student s2 = new Student(102,"Mam", LocalDate.parse(("2012-10-12")));
+        Student s3 = new Student(103,"Pam", LocalDate.parse(("2022-04-23")));
+
+
+        List<Student> list = new ArrayList<>();
+        list.add(s1);
+        list.add(s2);
+        list.add(s3);
+
+        ServiceDao service = new ServiceDao();
+
+        service.insertRecords(list);
+    }
+}
+
+package com.connection;
+
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+    public class DBConnection {
+        private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
+        private static final String USER = "system";
+        private static final String PASSWORD = "root";
+
+        public static Connection getConnection() {
+            Connection con = null;
+            try {
+                Class.forName("oracle.jdbc.driver.OracleDriver");
+
+                con = DriverManager.getConnection(URL, USER, PASSWORD);
+            } catch (ClassNotFoundException e) {
+                System.out.println("Oracle JDBC Driver not found. Add ojdbc.jar to classpath.");
+            } catch (SQLException e) {
+                System.out.println("Database connection error: " + e.getMessage());
+            }
+            return con;
+        }
+    }
+
+
+package com.model;
+
+import java.time.LocalDate;
+
+public class Student {
+
+    private int id;
+    private String name;
+    private LocalDate dob;
+
+    public Student(int id, String name, LocalDate dob) {
+        this.id = id;
+        this.name = name;
+        this.dob = dob;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dob=" + dob +
+                '}';
+    }
+}
+---------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
+================================================================================================================
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class connectdb {
+
+    private int id;
+    private String name;
+    private LocalDate dob;
+
+    public connectdb(int id, String name, LocalDate dob) {
+        this.id = id;
+        this.name = name;
+        this.dob = dob;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dob=" + dob +
+                '}';
+    }
+    
+    public class DBConnection {
+        private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
+        private static final String USER = "system";
+        private static final String PASSWORD = "root";
+
+        public static Connection getConnection() {
+            Connection con = null;
+            try {
+                Class.forName("oracle.jdbc.driver.OracleDriver");
+
+                con = DriverManager.getConnection(URL, USER, PASSWORD);
+            } catch (ClassNotFoundException e) {
+                System.out.println("Oracle JDBC Driver not found. Add ojdbc.jar to classpath.");
+            } catch (SQLException e) {
+                System.out.println("Database connection error: " + e.getMessage());
+            }
+            return con;
+        }
+    }
+
+public static void main(String[] args) throws SQLException {
+
+    Student s1 = new Student(101,"Ram", LocalDate.parse(("2002-10-23")));
+    Student s2 = new Student(102,"Mam", LocalDate.parse(("2012-10-12")));
+    Student s3 = new Student(103,"Pam", LocalDate.parse(("2022-04-23")));
+
+
+    List<Student> list = new ArrayList<>();
+    list.add(s1);
+    list.add(s2);
+    list.add(s3);
+
+    ServiceDao service = new ServiceDao();
+
+    service.insertRecords(list);
+}
+}
+---------------------------------------------------------------------------------------------------------------------------------
+package com.model;
+import java.time.*;
+public class Student {
+int id;
+String name;
+LocalDate dob;
+public Student(int id, String name, LocalDate dob) {
+	super();
+	this.id = id;
+	this.name = name;
+	this.dob = dob;
+}
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public LocalDate getDob() {
+	return dob;
+}
+public void setDob(LocalDate dob) {
+	this.dob = dob;
+}
+@Override
+public String toString() {
+	return "Student [id=" + id + ", name=" + name + ", dob=" + dob + "]";
+}
+
+}
+-------------------------------------------------------------
+package com.connection;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBConnection {
+public static Connection getConnection()
+{
+	Connection con=null;
+
+	try {
+	Class.forName("org.postgresql.Driver");
+	con=DriverManager.getConnection("jdbc:postgresql://localhost/sundaram","postgres","Shreemb2004r");
+}
+	catch(Exception e)
+	{
+		System.out.println(e);
+	}
+	return con;
+}}
+------------------------------------------------------------------------
+package com.service;
+import java.util.*;
+
+import com.connection.DBConnection;
+import com.model.Student;
+import java.sql.*;
+import java.sql.Date;
+import java.time.LocalDate;
+public class ServiceDao {
+public void insertRecords(List<Student> l)
+{try {
+	Connection con=DBConnection.getConnection();
+	String sql="insert into student values(?,?,?)";
+	PreparedStatement ps=con.prepareStatement(sql);
+	int i=0;
+	for(Student s:l)
+	{
+		ps.setInt(1,s.getId());
+		ps.setString(2, s.getName());
+		ps.setDate(3, Date.valueOf(s.getDob()));
+		// i=ps.executeUpdate();
+		
+		//i++;
+		ps.addBatch();
+	}
+	
+	ps.executeBatch();
+}
+catch(Exception e)
+{
+	System.out.println(e);
+}
+}
+public void  getAllstudents()
+{
+	List<Student> l=new ArrayList();
+	{
+		try {
+			Connection con=DBConnection.getConnection();
+			Statement st=con.createStatement();
+		ResultSet rs=	st.executeQuery("select * from student");
+			while(rs.next())
+				{
+				int id=rs.getInt(1);
+				String name=rs.getString(2);
+				java.sql.Date d=rs.getDate(3);
+				LocalDate d1=d.toLocalDate();
+				Student s=new Student(id,name,d1);
+				l.add(s);
+				}
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
+		for(Student s1:l)
+		{
+			System.out.println(s1);
+		}
+	}
+}
+
+
+
+}
+------------------------------------------------------------
+package com.utils;
+import java.util.*;
+import java.time.LocalDate;
+import com.model.*;
+import com.service.ServiceDao;
+
+public class Main {
+
+	public static void main(String[] args) {
+		List<Student> l=new ArrayList();
+		l.add(new Student(16,"ann",LocalDate.parse("2000-09-10")));
+		l.add(new Student(17,"bann",LocalDate.parse("2001-09-10")));
+		l.add(new Student(18,"kann",LocalDate.parse("2002-09-10")));
+ServiceDao dao=new ServiceDao();
+dao.insertRecords(l);
+System.out.println("from main");
+//dao.getAllstudents();
+
+	}
+}
+------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------
+========================================================================================================================
+
+CREATE OR REPLACE PROCEDURE find_square (
+    num IN NUMBER,
+    result OUT NUMBER
+) AS
+BEGIN
+    result := num * num;
+END;
+-------------------------------------------------
+import java.sql.*;
+
+public class CallableStatementSquareExample {
+    public static void main(String[] args) {
+        // Database credentials
+        String url = "jdbc:oracle:thin:@localhost:1521:xe";
+        String user = "your_username"; 
+        String password = "your_password"; 
+
+        Connection conn = null;
+        CallableStatement cstmt = null;
+
+        try {
+            
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+           
+            conn = DriverManager.getConnection(url, user, password);
+
+            
+            String sql = "{ call find_square(?, ?) }";
+            cstmt = conn.prepareCall(sql);
+
+            
+            int inputNumber = 5;  
+            cstmt.setInt(1, inputNumber);
+
+          
+            cstmt.registerOutParameter(2, Types.NUMERIC);
+
+        
+            cstmt.execute();
+
+           
+            int squareResult = cstmt.getInt(2);
+            System.out.println("Square of " + inputNumber + " is: " + squareResult);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           
+            try {
+                if (cstmt != null) cstmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------
+=======================================================================================================================================
+---------------------------------------------------------------------------------------------------------------------------------------
+
+*****
+public class callablestatement {
+    public static void main(String[] args) {
+        String url = "jdbc:oracle:thin:@localhost:1521:xe";
+        String user = "system"; 
+        String password = "Jaya@1234"; 
+********
+----------------------------------------------------------------------------------------------------------
+============================================================================================================
+GRAPHQL*************
+
+
+for all countries currency.
+
+
+query {
+  countries {
+    code
+    name
+    currencies
+    languages {
+      code
+      name
+    }
+    states {
+      code
+      name
+    }
+  }
+}
+------------------------------------------------------------------------------------------------------------
+
+for india querry
+
+query {
+  countries(filter: { code_in: ["IN"] }) {
+    code
+    name
+    languages {
+      code
+      name
+    }
+    states {
+      code
+      name
+    }
+  }
+}
+----------------------------------------------------------------------------------------------------------
+
+
+for india querry
+
+query {
+  country(code: "IN") {
+    code
+    name
+    languages {
+      code
+      name
+    }
+    states {
+      code
+      name
+    }
+  }
+}
+
+
+link --- http://localhost:4000/
+
+--------------------------------------------------
+ const UserList=[
+
+{
+id:1,
+name:"John",
+username:"john",
+age:23,
+nationality:"India"
+
+},
+{
+    id:2,
+    name:"Sara",
+    username:"Sara",
+    age:24,
+    nationality:"Brazil"
+    
+    },
+    {
+        id:3,
+        name:"Ken",
+        username:"Ken",
+        age:21,
+        nationality:"Canada"
+        
+        }
+];
+module.exports={ UserList };
+-----------------------------------
+typedefs
+const { gql }  = require("apollo-server");
+const typeDefs=gql`
+
+type User{
+    id: ID!
+    name: String!
+    username: String!
+    age: Int
+    nationality: nation
+    friends:[User]
+}
+
+type Query
+{
+    users: [User!]!
+}
+enum nation{
+    INDIA,
+    CHINA,
+    BRAZIL,
+    CHILE
+}
+
+`;
+module.exports={ typeDefs };
+-----------------------------------------------
+resolvers
+
+const { UserList }=require("../FakeData");
+
+const resolvers={
+Query:{
+
+    users(){
+
+        return UserList;
+    },
+},
+
+
+};
+module.exports={ resolvers };
+---------------------------------------------------
+fake data
+ const UserList=[
+
+{
+id:1,
+name:"John",
+username:"john",
+age:23,
+nationality:"INDIA",
+friends:[{
+    id:3,
+    name:"Ken",
+    username:"Ken",
+    age:21,
+    nationality:"BRAZIL"},
+    {
+        id:2,
+        name:"Sara",
+        username:"Sara",
+        age:24,
+        nationality:"CHINA"
+    }
+
+]
+
+},
+{
+    id:2,
+    name:"Sara",
+    username:"Sara",
+    age:24,
+    nationality:"CHINA"
+    
+    },
+    {
+        id:3,
+        name:"Ken",
+        username:"Ken",
+        age:21,
+        nationality:"BRAZIL",
+        friends:
+       [ {
+
+        id:2,
+        name:"Sara",
+        username:"Sara",
+        age:24,
+        nationality:"CHINA"
+
+        }]
+        
+        }
+];
+module.exports={ UserList };
+-----------------------------------------------------------------
+example for graphql
+query ExampleQuery123 {
+users {
+  
+    id
+    name
+    nationality
+    age
+    friends{
+      name
+      nationality
+    }
+  }
+}
+}
+------------------------------------------------------------------------
+
+
+package com.test;
+
+import org.junit.jupiter.api.AfterEach;  // JUnit 5
+import org.junit.jupiter.api.BeforeAll; // JUnit 5
+import org.junit.jupiter.api.BeforeEach; // JUnit 5
+import org.junit.jupiter.api.Test;      // JUnit 5
+
+public class Apptest {
+
+    @BeforeAll
+    public static void meth() {
+        System.out.println("hi");
+    }
+
+    @BeforeEach
+    public void meth2() { // No need for static here
+        System.out.println("Before Each");
+    }
+
+    @AfterEach
+    public void meth3() { // No need for static here
+        System.out.println("After Each");
+    }
+
+    @Test
+    public void meth1() {
+        System.out.println("Test1");
+    }
+
+    @Test
+    public void meth4() {
+        System.out.println("Test2");
+    }
+}
+----------------------------------------------------------------------------------------------
+package com.pack;
+
+public class MainClass {
+
+	public int addMeth(int x,int y)
+	{
+		return x+y;
+	}
+	
+	public boolean checkString(String s)
+	{
+		if(s.length()%2==0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+-----------------------------------------------
+package com.test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import com.pack.MainClass;
+
+public class Apptest {
+	static MainClass obj=null;
+@BeforeAll
+public static void before1()
+{
+	obj=new MainClass();
+}
+	@Test
+	@DisplayName("Adding 2 nos")
+	public void testAddMeth()
+	{
+		
+		int actual=obj.addMeth(5, 6);
+		int expected=11;
+		assertEquals(expected,actual);
+		
+	}
+	@Test
+	public void testcheckString()
+	{
+		
+		boolean b=obj.checkString("Anil");
+		assertTrue(b);
+		
+	}
+	
+	
+	@Disabled
+	public void methUnderTesting()
+	{
+		System.out.println("hello");
+		
+	}
+	
+}
+
+-----------------------------------------------------------------------------------------
+1)
+
+import java.util.Scanner;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.util.HashMap;
+import java.util.Scanner;
+class Population {
+HashMap<String, Integer> dataList = new HashMap<>();
+public String maxPopulation() {
+String maxCountry = " ";
+int maxPopulation = 0;
+for (Map.Entry<String, Integer> entry : dataList.entrySet()) {
+if (entry.getValue() > maxPopulation) {
+maxPopulation = entry.getValue();
+maxCountry = entry.getKey();
+}
+}
+return maxCountry;
+}
+public int totalPopulation() {
+int total = 0;
+for (int population : dataList.values()) {
+total = total + population;
+}
+return total;
+}
+}
+public class Main {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+Population population = new Population();
+for (int i = 0; i < 3; i++) {
+String countries = scanner.next();
+int popul = scanner.nextInt();
+population.dataList.put(countries, popul);
+}
+System.out.println(population.maxPopulation());
+System.out.println(population.totalPopulation());
+}
+}
+
+-----------------------------------------------------------------------
+2)
+
+import java.util.Scanner;
+import java.lang.*;
+class RoomTypeNotAvailableException extends Exception {
+public RoomTypeNotAvailableException(String message) {
+super(message);
+}
+}
+class InsufficientBalanceException extends Exception {
+public InsufficientBalanceException(String message) {
+super(message);
+}
+}
+class InvalidStayDurationException extends Exception {
+public InvalidStayDurationException(String message) {
+super(message);
+}
+}
+class HotelBooking {
+private double balance;
+private static final double ROOM_COST = 100.0;
+private static final String[] AVAILABLE_ROOM_TYPES = {"Single", "Double", "Suite"};
+public HotelBooking(double balance) {
+this.balance = balance;
+}
+public boolean isRoomTypeAvailable(String roomType) {
+for (String availableRoom : AVAILABLE_ROOM_TYPES) {
+if (availableRoom.equalsIgnoreCase(roomType)) {
+return true;
+}
+}
+return false;
+}
+public double getBalance() {
+return balance;
+}
+public void bookRoom(String roomType, double payment, int days) throws RoomTypeNotAvailableException,
+InsufficientBalanceException, InvalidStayDurationException {
+if (!isRoomTypeAvailable(roomType)) {
+throw new RoomTypeNotAvailableException("Room type " + roomType + " is not available.");
+}
+if (days <= 0) {
+throw new InvalidStayDurationException("Stay duration must be positive. Invalid stay: " + days);
+}
+double totalCost = ROOM_COST * days;
+if (payment < totalCost) {
+throw new InsufficientBalanceException("Payment of " + payment + " is insufficient. Total cost is " + totalCost);
+}
+balance = balance - totalCost;
+System.out.println("Room booked successfully! Remaining balance: Rs " + balance);
+}
+}
+public class Main {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+System.out.print("Enter account balance: ");
+double balance = scanner.nextDouble();
+scanner.nextLine();
+HotelBooking booking = new HotelBooking(balance);
+System.out.print("Enter room type (Single, Double, Suite): ");
+String roomType = scanner.nextLine();
+System.out.print("Enter payment amount: ");
+double payment = scanner.nextDouble();
+System.out.print("Enter stay duration (in days): ");
+int days = scanner.nextInt();
+try {
+booking.bookRoom(roomType, payment, days);
+} catch (RoomTypeNotAvailableException | InsufficientBalanceException | InvalidStayDurationException e) {
+System.out.println(e.getMessage());
+}
+}
+}
+---------------------------------------------------------------------------------------------------------
+
+@ParameterizedTest
+	@ValueSource(strings= {"ram","annu","banu"})
+	public void testcheckString(String str)
+	{
+		
+		boolean b=obj.checkString(str);
+		assertTrue(b);
+		
+	}
+-----------------------------------------------
+public boolean checkString(String s)
+	{
+		if(s.length()%2==0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+-------------------------------------------------------------
+
+public int methodForException(String s)
+	{
+		if(s==null||s.trim().length()==0)
+		{
+			throw new IllegalArgumentException("check string for not null");
+		}
+		return Integer.valueOf(s);
+	}
+-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=---=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+      
+package com.pack;
+
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
+
+
+
+public class MainClass {
+
+	public int addMeth(int x,int y)
+	{
+		return x+y;
+	}
+	
+	public String intgreater(int a,int b)
+	{
+		String message=null;
+		if(a>b)
+		{
+			message="Greater";
+			
+		}
+		else
+		{
+			message="smaller.";
+		}
+		return message;
+	}
+	public boolean checkString(String s)
+	{
+		if(s.length()%2==0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	
+	
+	public int methodForException(String s)
+	{
+		if(s==null||s.trim().length()==0)
+		{
+			throw new IllegalArgumentException("Check string for not null or empty");
+		}
+		return Integer.valueOf(s);
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+--------------------------------------------
+testcase file
+----------------------------------------------
+package com.test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.RepeatedTest;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import com.pack.MainClass;
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class Apptest {
+	static MainClass obj=null;
+@BeforeAll
+public static void before1()
+{
+	obj=new MainClass();
+}
+	@Test
+	@Order(1)
+	@DisplayName("Adding 2 nos")
+	public void testAddMeth()
+	{
+		
+		int actual=obj.addMeth(5, 6);
+		int expected=11;
+		assertEquals(expected,actual);
+		
+	}
+	@ParameterizedTest
+	@ValueSource(strings= {"ram","annu","banu"})
+	@Order(2)
+	public void testcheckString(String str)
+	{
+		
+		boolean b=obj.checkString(str);
+		assertTrue(b);
+		
+	}
+	@AfterAll
+	public static void before12()
+	{
+		obj=null;
+		System.out.println("end of after all");
+	}	
+	@Test
+	@Order(3)
+	public void testcheckbigger()
+	{
+		String actual=obj.intgreater(6, 7);
+		assertEquals("smaller",actual);
+	}
+	@Test
+	@DisplayName("tesing for Exception")
+		public void testMeth5()
+	{
+		String s=" ";
+		Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+			   obj.methodForException(s);
+			  });
+			  assertEquals("Check string for not null or empty", exception.getMessage());
+	}
+	@Test
+	@DisplayName("tesing for Exception for string null")
+		public void testMeth6()
+	{
+		String s=null;
+		Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+			   obj.methodForException(s);
+			  });
+			  assertEquals("Check string for not null or empty", exception.getMessage());
+	}
+	@Test
+	@DisplayName("tesing for not getting Exception for string 123")
+		public void testMeth7()
+	{
+		int actual=obj.methodForException("123");
+		assertEquals(123,actual);
+	}
+	
+	
+	
+}
+
+-----------------------------------------------------------------------------------------------------------------------
+
+package HM;
+
+import static java.lang.Integer.parseInt;
+
+class StringPlay{
+    int convert;
+    int max;
+}
+class  StringMethods{
+    String str;
+   int convertToInt(StringPlay sp,String str){
+       int result=parseInt(str);
+      return sp.convert=result;
+
+
+    }
+    int getMax(StringPlay sp,String str,char ch){
+       int counter=0;
+       for(int i=0;i<str.length();i++){
+           if(str.charAt(i)==ch){
+               counter++;
+           }
+
+       }
+       return sp.max=counter;
+    }
+
+}
+public class ConvertToIntAndCountOfChar {
+    public static void main(String[] args) {
+
+        StringPlay sp=new StringPlay();
+        StringMethods sm=new StringMethods();
+        System.out.println(sm.convertToInt(sp,"123"));
+        System.out.println(sm.getMax(sp,"helloooo", 'e'));
+
+
+
+
+    }
+}
+------------------------------
+
+package HM;
+
+class Encryption{
+    String message;
+    String decodeMessage(String message){
+       String Strresult=message.replaceAll("[AEIOUaeiou]","");
+       return  Strresult;
+
+    }
+}
+public class EncryptionDecryptionDemo {
+    public static void main(String[] args) {
+        Encryption e=new Encryption();
+        System.out.println(e.decodeMessage("helloraja"));
+    }
+
+}
+
+----------------------
+
+package HM;
+
+class Student5 {
+    String name;
+    String usn;
+    String college;
+    int cgpa;
+
+    public Student5(String name, String usn, String college, int cgpa) {
+        this.name = name;
+        this.usn = usn;
+        this.college = college;
+        this.cgpa = cgpa;
+    }
+}
+
+class StudentImplementation5 {
+
+    public Student5 getStudentInfo(String str) {
+        String[] parts = str.split("[@#-]");
+
+        String name = parts[0];
+        String usn = parts[1];
+        String college = parts[2];
+        int cgpa = Integer.parseInt(parts[3]);
+
+        return new Student5(name, usn, college, cgpa);
+    }
+
+    public String getStudentSection(Student5 s) {
+        String lastThreeDigits = s.usn.substring(s.usn.length() - 3);
+        int usnNumber = Integer.parseInt(lastThreeDigits);
+
+        if (usnNumber >= 1 && usnNumber <= 60) return "A";
+        else if (usnNumber >= 61 && usnNumber <= 120) return "B";
+        else if (usnNumber >= 121 && usnNumber <= 180) return "C";
+        else return "Z";
+    }
+}
+
+public class Main5 {
+    public static void main(String[] args) {
+        String input = "Amit Rai@1PC16CS046-ALU#8";
+        StudentImplementation5 si = new StudentImplementation5();
+
+        Student5 student = si.getStudentInfo(input);
+
+        System.out.println(student.name);
+        System.out.println(student.usn);
+        System.out.println(student.college);
+        System.out.println(student.cgpa);
+
+        System.out.println(si.getStudentSection(student));
+    }
+}
+--------------------------
+
+package HM;
+
+import java.time.Duration;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+public class ParkingMainDEmo {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        try {
+            System.out.print("Enter In-Time (HH:mm): ");
+            LocalTime inTime = LocalTime.parse(scanner.next(), formatter);
+
+            System.out.print("Enter Out-Time (HH:mm): ");
+            LocalTime outTime = LocalTime.parse(scanner.next(), formatter);
+
+            if (outTime.isBefore(inTime)) {
+                System.out.println("Error: Out-Time must be after In-Time.");
+                return;
+            }
+
+            long totalMinutes = Duration.between(inTime, outTime).toMinutes();
+            long hours = totalMinutes / 60;
+            long remainingMinutes = totalMinutes % 60;
+
+            int totalCharge = (int) (hours * 10 + (remainingMinutes > 0 ? 10 : 0));
+
+            System.out.println("Total Parking Fee: " + totalCharge + " Rupees");
+        } catch (Exception e) {
+            System.out.println("Invalid input format. Please enter time in HH:mm format.");
+        } finally {
+            scanner.close();
+        }
+    }
+}
+
+
+-----------------
+
+package HM;
+
+class Student1 {
+    String name;
+    String usn;
+    String college;
+    int cgpa;
+
+    Student1(String name, String usn, String college, int cgpa) {
+        this.name = name;
+        this.usn = usn;
+        this.college = college;
+        this.cgpa = cgpa;
+    }
+
+    @Override
+    public String toString() {
+        return "Student1{" +
+                "name='" + name + '\'' +
+                ", usn='" + usn + '\'' +
+                ", college='" + college + '\'' +
+                ", cgpa=" + cgpa +
+                '}';
+    }
+}
+
+class StudentImplementation {
+    Student1 stuname;
+
+    StudentImplementation(Student1 stuname) {
+        this.stuname = stuname;
+    }
+
+    Student1 getStudentInfo(String str) {
+        if (stuname != null && stuname.name.equals(str)) {
+            return this.stuname;
+        }
+        return null;
+    }
+
+    public String getStudentSection(Student1 std) {
+        if (std == null || std.usn.length() < 3) {
+            return "Invalid USN";
+        }
+
+        String lastThreeDigitsStr = std.usn.replaceAll("[^0-9]", ""); // Extract numbers from USN
+        if (lastThreeDigitsStr.length() < 3) {
+            return "Invalid USN";
+        }
+
+        lastThreeDigitsStr = lastThreeDigitsStr.substring(lastThreeDigitsStr.length() - 3); // Get last three digits
+        int lastThreeDigits = Integer.parseInt(lastThreeDigitsStr);
+
+        if (lastThreeDigits >= 1 && lastThreeDigits <= 60) {
+            return "A";
+        } else if (lastThreeDigits >= 61 && lastThreeDigits <= 120) {
+            return "B";
+        } else if (lastThreeDigits >= 121 && lastThreeDigits <= 180) {
+            return "C";
+        }
+        return "Z";
+    }
+}
+
+public class StdDemo {
+    public static void main(String[] args) {
+        Student1 s2 = new Student1("chenna", "MIT123060", "mits", 8); // Ensure USN has digits
+        StudentImplementation si = new StudentImplementation(s2);
+
+        Student1 result = si.getStudentInfo("chenna");
+        if (result != null) {
+            System.out.println("Student Found: " + result);
+            System.out.println("Section: " + si.getStudentSection(result));
+        } else {
+            System.out.println("Student Not Found");
+        }
+    }
+}
+-------------------------------------------------------------------------------------------------------------------
+sevelet connection form 
+
+
+-------------FirstServlet--------------------
+
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+/**
+ * Servlet implementation class FirstServlet
+ */
+@WebServlet("/FirstServlet")
+public class FirstServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public FirstServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see Servlet#init(ServletConfig)
+	 */
+	public void init(ServletConfig config) throws ServletException {
+		// TODO Auto-generated method stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		RequestDispatcher rd = null;
+		PrintWriter pw =response.getWriter();
+		String name = request.getParameter("uname");
+		
+		if(name.equals("ram"))
+		{
+			rd=request.getRequestDispatcher("Success");
+			rd.forward(request, response);
+		}
+		pw.println("Hello "+name+"!! Welcome to Servlets");
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+		
+		PrintWriter pw =response.getWriter();
+		pw.println("Login");
+	}
+
+}
+
+
+---------index.html---------------
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="FirstServlet" method="get">
+<input type="text" name="uname"/>
+<input type="submit" value="login"/>
+</form>
+</body>
+</html>
+
+
+----------Success------------
+
+
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+/**
+ * Servlet implementation class Success
+ */
+@WebServlet("/Success")
+public class Success extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Success() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		PrintWriter pw=response.getWriter();
+		pw.print("Sucessful");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
+
+
+
+-----------------------------------------------------------------------------------------------------------------
+
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.model.Person;
+
+/**
+ * Servlet implementation class MVCServlet
+ */
+@WebServlet("/MVC")
+public class MVCServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public MVCServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		int id=Integer.parseInt(request.getParameter("id"));
+		String name=request.getParameter("uname");
+		Person p=new Person(id,name);
+		if(p.getName().equals("albin"))
+		{
+			request.setAttribute("str", p);
+			javax.servlet.RequestDispatcher disp=request.getRequestDispatcher("DetailsServlet");
+			disp.forward(request, response);
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
+------------------------------
+package com.model;
+
+public class Person {
+	private int id;
+	private String name;
+	public Person(){}
+	public Person(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "Person [id=" + id + ", name=" + name + "]";
+	}
+	
+
+}
+-------------------------------------------------
+
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.model.Person;
+
+/**
+ * Servlet implementation class DetailsServlet
+ */
+@WebServlet("/DetailsServlet")
+public class DetailsServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public DetailsServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Person p=(Person)request.getAttribute("str");
+		java.io.PrintWriter obj=response.getWriter();
+		obj.println(p);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
+----------------------------------------
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="MVC"  method="get">
+<input type="text" name="id"/>
+<input type="text" name="uname"/>
+<input type="submit" value="login"/>
+
+</form>
+</body>
+</html>
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%! int x=10; %>
+
+<% int y=20;%>
+
+
+declarative x:<%= x++%>
+scriplet y:<%= y++%>
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------------
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSP Tag Example</title>
+</head>
+<body>
+    <h2>JSP Tag Example</h2>
+
+    <!-- Using JSP Expression Language (EL) -->
+    <p>Today's Date: ${pageContext.request.time}</p>
+
+    <!-- Using JSTL Core Tag -->
+    <c:set var="message" value="Hello, JSP Tag!" />
+    <p>Message: <c:out value="${message}" /></p>
+</body>
+</html>
+--------------------------------------------------------------------------------------------------------------------------
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <h1 "style text-align=center";>Product Order Status</h1>
+  <table border="1";>
+  <tr>
+  <td>
+  Customer Name
+  </td>
+  <td>
+  City
+  </td>
+  <td>
+  Order Date
+  </td>
+  <td>
+   Order Status
+  </td>
+  <tr>
+    <td>
+    Karthick
+    </td>
+    <td>
+    Mumbai
+    </td>
+    <td>
+    07-DEC-20
+    </td>
+    <td>
+    Shipped
+    </td>
+    <tr>
+    <td>
+    Sharmila
+    </td>
+    <td>
+    Bangalore
+    </td>
+    <td>
+    08-DEC-20
+    </td>
+    <td>
+    Shipped
+    </td>
+    </tr>
+    <tr>
+    <td>
+    Akshay
+    </td>
+    <td>
+    Mumbai
+    </td>
+    <td>
+    07-DEC-20
+    </td>
+    <td>
+    Shipped
+    </td>
+    </tr>
+  </tr>
+  </tr>
+  </table>
+    </body>
+    
+</html>
+---------------------------------------------------------------------------------------------------------------------------------------------------
+login.html
+--------------------
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="DemoServlet">
+<input type="text" name="uname"/>
+<input type="text" name="college"/>
+<input type="submit" value="Login"/>
+</form>
+</body>
+</html>
+------------------------------------------------
+
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.model.Person;
+
+/**
+ * Servlet implementation class DemoServlet
+ */
+@WebServlet("/DemoServlet")
+public class DemoServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    
+  
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String str=request.getParameter("uname");
+		String college=request.getParameter("college");
+		Person p=new Person(str,college);
+		request.setAttribute("str1", p);
+		javax.servlet.RequestDispatcher disp=request.getRequestDispatcher("index3.jsp");
+	disp.forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}
+------------------------------------------------------
+package com.model;
+
+public class Person {
+private String name;
+private String college;
+public Person(String name, String college) {
+	super();
+	this.name = name;
+	this.college = college;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public String getCollege() {
+	return college;
+}
+public void setCollege(String college) {
+	this.college = college;
+}
+@Override
+public String toString() {
+	return "Person [name=" + name + ", college=" + college + "]";
+}
+
+}
+-------------------------------------------------------------
+<%@ page language="java" contentType="text/html" charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%com.model.Person p=(com.model.Person)request.getAttribute("str1");
+%>
+<%=p %>
+</body>
+</html>
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
+jar file --> snapshot of our project;
+
+all the tasks we give it as a script file --> shell script;
+
+build + project management tool \\src/main java-- java code\\ --> \\src/main resourc-- configuration\\ --->\\ src/maintest-- test cases\\ --> maven;
+
+in spring two projects,
+
+spring core, -- quick start 
+spring web -- web app
+
+
+quick start project -- main method
+web app project -- wont have main method
+
+pom - project object model -- pom.xml
+
+mvm -- maven repository downlaod it from central repository
+
+central repository -- keep it under local repository
+
+spring provides loose coupling
+
+spring framework can integrate with other framework -- so it is a framework of framework.
+
+pre defined templates;
+loosely coupling;
+easy to test;
+lightweight;
+fast development;
+powerful abstraction;
+declarative support;
+
+
+ioc container - inversion of control -- bean factory, application context.
+
+core -- provides fundamnetal part of the 
+------------------------------------------------------------------------------------------------------------------------------------
+
+package com.example.SpringXMLConfig;
+
+public class Employee {
+int id;
+String name;
+String city;
+Employee(){}
+
+public Employee(int id, String name, String city) {
+	
+	this.id = id;
+	this.name = name;
+	this.city = city;
+}
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public String getCity() {
+	return city;
+}
+public void setCity(String city) {
+	this.city = city;
+}
+@Override
+public String toString() {
+	return "Employee [id=" + id + ", name=" + name + ", city=" + city + "]";
+}
+
+
+
+
+}
+----------------------------------------------
+
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context = "http://www.springframework.org/schema/context"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+  
+   
+    <bean id="emp" class="com.example.SpringXMLConfig.Employee">
+ <property name="id" value="10"></property>
+ <property name="name" value="Ann"></property>
+ <property name="city" value="hyd"></property>
+    </bean>
+    
+   
+</beans>
+--------------------------------------------------------------------
+package com.example.SpringXMLConfig;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("beans.xml");
+    Employee e=ctx.getBean("emp",Employee.class);
+   
+    System.out.println(e);
+    
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context = "http://www.springframework.org/schema/context"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+<bean id="adr" class="com.example.SpringXMLConfig.model.Address">
+<constructor-arg value="blore"></constructor-arg>
+<constructor-arg value="karnataka"></constructor-arg>
+
+</bean>
+  
+   
+    <bean id="emp" class="com.example.SpringXMLConfig.model.Employee">
+<property name="id" value="100"></property>
+<property name="name" value="ann"></property>
+<property name="adr" ref="adr"></property>
+    </bean>
+    
+   
+</beans>
+--------------------------------------------
+package com.example.SpringXMLConfig.model;
+
+public class Employee {
+int id;
+String name;
+Address adr;
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public Address getAdr() {
+	return adr;
+}
+public void setAdr(Address adr) {
+	this.adr = adr;
+}
+@Override
+public String toString() {
+	return "Employee [id=" + id + ", name=" + name + ", adr=" + adr + "]";
+}
+
+
+
+
+}
+
+------------------------------------------------
+package com.example.SpringXMLConfig.model;
+
+public class Address {
+String city;
+String state;
+
+public Address(String city, String state) {
+	
+	this.city = city;
+	this.state = state;
+}
+public String getCity() {
+	return city;
+}
+public void setCity(String city) {
+	this.city = city;
+}
+public String getState() {
+	return state;
+}
+public void setState(String state) {
+	this.state = state;
+}
+@Override
+public String toString() {
+	return "Address [city=" + city + ", state=" + state + "]";
+}
+
+
+
+}
+------------------------------------------
+package com.example.SpringXMLConfig;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.example.SpringXMLConfig.model.Employee;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("beans.xml");
+    Employee e=ctx.getBean("emp",Employee.class);
+   
+    System.out.println(e);
+    
+    }
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+package com.example.SpringXMLConfig.model;
+
+public class Address {
+String city;
+String state;
+
+public Address(String city, String state) {
+	
+	this.city = city;
+	this.state = state;
+}
+public String getCity() {
+	return city;
+}
+public void setCity(String city) {
+	this.city = city;
+}
+public String getState() {
+	return state;
+}
+public void setState(String state) {
+	this.state = state;
+}
+@Override
+public String toString() {
+	return "Address [city=" + city + ", state=" + state + "]";
+}
+
+
+
+}
+------------------------------------------------
+package com.example.SpringXMLConfig.model;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+public class Employee {
+int id;
+String name;
+
+Address adr;
+
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
+public Address getAdr() {
+	return adr;
+}
+@Autowired
+@Qualifier("adr2")
+public void setAdr(Address adr) {
+	this.adr = adr;
+}
+@Override
+public String toString() {
+	return "Employee [id=" + id + ", name=" + name + ", adr=" + adr + "]";
+}
+
+
+
+
+}
+
+-----------------------------------------------------
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:context = "http://www.springframework.org/schema/context"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+   <context:annotation-config/>
+
+<bean id="adr1" class="com.example.SpringXMLConfig.model.Address">
+<constructor-arg value="blore"></constructor-arg>
+<constructor-arg value="karnataka"></constructor-arg>
+
+</bean>
+<bean id="adr2" class="com.example.SpringXMLConfig.model.Address">
+<constructor-arg value="hyderabad"></constructor-arg>
+<constructor-arg value="Telangana"></constructor-arg>
+
+</bean>
+  
+   
+    <bean id="emp" class="com.example.SpringXMLConfig.model.Employee" >
+<property name="id" value="100"></property>
+<property name="name" value="ann"></property>
+
+    </bean>
+    
+   
+</beans>
+-----------------------------------------------------
+package com.example.SpringXMLConfig;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.example.SpringXMLConfig.model.Employee;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("beans.xml");
+    Employee e=ctx.getBean("emp",Employee.class);
+   
+    System.out.println(e);
+    
+    }
+}
+
+-------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------
+
+package com.example.ClassBasedSpringCoreDemo.model;
+
+import org.springframework.stereotype.Component;
+
+
+public class Employee {
+	private int id;
+	String name;
+	public Employee(int id, String name) {
+	
+		this.id = id;
+		this.name = name;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + "]";
+	}
+	
+	
+
+}
+---------------------------------------------------------
+@Configuration
+
+public class AppConfig {
+	
+	@Bean
+	public Employee getEmpObject()//Employee getEmpObject=new Employee();
+	{
+		Employee e=new Employee(10,"ann");
+		return e;
+		
+	}
+
+}
+--------------------------------------------------------------
+package com.example.ClassBasedSpringCoreDemo;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.example.ClassBasedSpringCoreDemo.config.AppConfig;
+import com.example.ClassBasedSpringCoreDemo.model.Employee;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+       ApplicationContext ctx=new AnnotationConfigApplicationContext(AppConfig.class);
+   Employee e=ctx.getBean("getEmpObject",Employee.class);
+   System.out.println(e);
+    
+    }
+}
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+package com.example.ClassAutowiredDemo.model;
+
+import org.springframework.stereotype.Component;
+
+
+public class Address {
+String city;
+String state;
+
+public Address(String city, String state) {
+
+	this.city = city;
+	this.state = state;
+}
+public String getCity() {
+	return city;
+}
+public void setCity(String city) {
+	this.city = city;
+}
+public String getState() {
+	return state;
+}
+public void setState(String state) {
+	this.state = state;
+}
+@Override
+public String toString() {
+	return "Address [city=" + city + ", state=" + state + "]";
+}
+
+}
+-----------------------------------------
+package com.example.ClassAutowiredDemo.model;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+
+public class Employee {
+	int id=100;
+	String name="ann";
+	@Autowired(required=true)
+	Address adr;
+	
+	public Employee(int id, String name, Address adr) {
+		super();
+		
+		this.name = name;
+		this.adr = adr;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Address getAdr() {
+		return adr;
+	}
+	public void setAdr(Address adr) {
+		this.adr = adr;
+	}
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", name=" + name + ", adr=" + adr + "]";
+	}
+	
+	
+
+}
+--------------------------------------------------
+package com.example.ClassAutowiredDemo.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.example.ClassAutowiredDemo.model.Address;
+import com.example.ClassAutowiredDemo.model.Employee;
+
+@Configuration
+
+public class AppConfig {
+	@Bean
+    public Address address() {
+        return new Address("New York", "NY"); // Creating Address bean
+    }
+
+    @Bean
+    public Employee employee() {
+        return new Employee(10,"Ben", address()); // Injecting Address into Employee
+    }
+}
+	
+
+----------------------------------
+package com.example.ClassAutowiredDemo;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.example.ClassAutowiredDemo.config.AppConfig;
+import com.example.ClassAutowiredDemo.model.Employee;
+
+
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+    	ApplicationContext ctx=new AnnotationConfigApplicationContext(AppConfig.class);
+        //Emp e=(Emp)ctx.getBean("getEmployeeObject");
+        Employee e=ctx.getBean(Employee.class);
+        System.out.println(e);
+    }
+}
+--------------------------------------===============================================================================================================
+========================================================================================================================
+
+package com.walmart.ClassBasedConfigDemo.model;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component ("empobj")
+public class Emp { 
+	@Value(value="100")
+	int empId;
+	@Value(value="Ben")
+	String empname;
+	@Autowired
+	Address adr;
+	
+	
+	public int getEmpId() {
+		return empId;
+	}
+	public void setEmpId(int empId) {
+		this.empId = empId;
+	}
+	public String getEmpname() {
+		return empname;
+	}
+	public void setEmpname(String empname) {
+		this.empname = empname;
+	}
+	public Address getAdr() {
+		return adr;
+	}
+	public void setAdr(Address adr) {
+		this.adr = adr;
+	}
+	@Override
+	public String toString() {
+		return "Emp [empId=" + empId + ", empname=" + empname + ", adr=" + adr + "]";
+	}
+	
+	
+
+}
+--------------------------------------
+package com.walmart.ClassBasedConfigDemo.model;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Address {
+	@Value(value="chennai")
+String city;
+	@Value(value="TN")
+String state;
+public String getCity() {
+	return city;
+}
+public void setCity(String city) {
+	this.city = city;
+}
+public String getState() {
+	return state;
+}
+public void setState(String state) {
+	this.state = state;
+}
+@Override
+public String toString() {
+	return "Address [city=" + city + ", state=" + state + "]";
+}
+
+	
+	
+	
+}
+--------------------------------------------
+package com.walmart.ClassBasedConfigDemo.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+import com.walmart.ClassBasedConfigDemo.model.Emp;
+
+@Configuration
+@ComponentScan("com.*")
+public class AppConfig {
+	/*
+	@Bean
+	public  Emp   getEmployeeObject()//Emp getEmployeeObject=new Emp();
+	{
+		Emp e=new Emp();
+		e.setEmpId(100);
+		e.setEmpname("John");
+		return e;
+	}
+	
+	*/
+
+}
+------------------------
+package com.walmart.ClassBasedConfigDemo;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.walmart.ClassBasedConfigDemo.config.AppConfig;
+import com.walmart.ClassBasedConfigDemo.model.Emp;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+       ApplicationContext ctx=new AnnotationConfigApplicationContext(AppConfig.class);
+       //Emp e=(Emp)ctx.getBean("getEmployeeObject");
+       Emp e=ctx.getBean("empobj",Emp.class);
+       System.out.println(e);
+    }
+}
+---------------------------------------------
+
+scopes of beam
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+		 <------------
+ dispatch servlet ----------->handler mapping
+   |		|
+   |		|
+   |		|-------------->					
+   |  		|<--------------controller
+   | 		|
+  view		|
+		|------------------>
+		<-------------------view resolver
+
+=======================================================================================================================================
+
+Spring MVC Workflow (Request Flow)
+Client sends an HTTP request to the Spring MVC application.
+The request is intercepted by DispatcherServlet (Front Controller).
+HandlerMapping determines the appropriate controller to process the request.
+The request is forwarded to the Controller, which processes it using the Service layer.
+The Controller prepares the model data and returns a logical view name.
+ViewResolver maps the logical view name to an actual view.
+The view (e.g., JSP, Thymeleaf) is rendered with the model data and sent as a response.
+----------------------------------------------------------------------------------------
+Component	          Description
+DispatcherServlet	The Front Controller that handles all incoming requests and                   routes them              to the appropriate controller.
+HandlerMapping	        Maps URLs to controllers (Decides which controller should handle which request).
+Controller	                          Contains business logic and processes user input.
+Model	                                            Holds application data (Java objects, DTOs).
+ViewResolver	                               Resolves views like JSP, Thymeleaf, JSON, XML.
+View (JSP/HTML)	                 The UI layer of the application.
+Service Layer	                                Business logic layer (Interacts with repositories or external APIs).
+DAO (Data Access Object)	Handles database operations (If connected to a database).
+
+==================================================================================================================================================================================================================
+add dependency to pom.xml
+---------------------------------
+<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.3.30</version>
+        </dependency>
+
+        <!-- Servlet API -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- JSP and JSTL -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
+-------------------------------------------
+web.xml file under web-inf
+-----------------------
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         version="3.0">
+    <servlet>
+        <servlet-name>dispatcher</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>dispatcher</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>
+------------------------------------------------------------
+spring-servlet.xml
+------------------------------
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.example.controller"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+</beans>
+-----------------------------------------------------------------------------------
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+
+public class HomeController {
+
+	@RequestMapping("/")
+    public String home(Model model) {
+        model.addAttribute("message", "Welcome to Spring MVC!");
+        return "home"; // Resolves to /WEB-INF/views/home.jsp
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+AppConfig under com.example.config package
+-------------------------------
+package com.example.config;
+
+
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
+
+public class WebInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+
+    @Override
+    protected Class<?>[] getRootConfigClasses() {
+        return new Class[]{AppConfig.class};
+    }
+
+    @Override
+    protected Class<?>[] getServletConfigClasses() {
+        return null;
+    }
+
+    @Override
+    protected String[] getServletMappings() {
+        return new String[]{"/"};
+    }
+}
+
+---------------------------------------------
+package com.example.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages = "com.example")
+public class AppConfig implements WebMvcConfigurer {
+
+    @Bean
+    public ViewResolver viewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setSuffix(".jsp");
+        return resolver;
+    }
+}
+
+=============================================================================================================================================================
+
+to kill app running on port
+netstat -ano | findstr  portno
+taskkill /f /pid   number
+----------------------------------------------=================================================================
+<dependency>
+        <groupId>org.apache.tomcat.embed</groupId>
+        <artifactId>tomcat-embed-jasper</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>jakarta.servlet.jsp.jstl</groupId>
+        <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+        <version>2.0.0</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.glassfish.web</groupId>
+        <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+        <version>2.0.0</version>
+    </dependency>
+==========================================================================================================================================================================
+
+@GetMapping("hello/{name}/{quantity}")
+	public String sayhello1(@PathVariable("name") String name1,@PathVariable("quantity") int q)
+	{
+		return ("hello"+name1+"you got"+q +"points");
+		
+	}
+
+--------------------------------------=============================================================================
+
+ @GetMapping("/product")
+	    public String getProductDetails(@RequestParam String name, 
+	                                    @RequestParam(required = false, defaultValue = "1") int quantity) {
+	        return "Product: " + name + ", Quantity: " + quantity;
+	    }
+//http://localhost:9093/home/product?name=Laptop&quantity=5
+
+--------------------------------------------------------=============================================================
+
+ @Service
+public class ProductService {
+    
+    private static List<Product> data = new ArrayList();
+     
+    static {
+        data.add(new Product(1, "iPhone X", 999.99f));
+        data.add(new Product(2, "XBOX 360", 329.50f));     
+    }
+     
+    public ProductService() {
+         
+    }
+     
+  
+     
+    public List<Product> listAllProducts() {
+        
+    	return data;
+    }
+    
+------------------------------------------------==========================================================================
+
+@GetMapping("/{id}")
+   public ResponseEntity<?> getProductById(@PathVariable Integer id) {
+       try {
+           Product product = service.getProductById(id);
+           return ResponseEntity.ok(product);
+       } 
+       catch (InvalidProductIDException ex) {
+           Map<String, String> errorResponse = new HashMap<>();
+           errorResponse.put("error", "Product Not Found");
+           errorResponse.put("message", ex.getMessage());
+           return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+       }
+   }
+---------------------------------------------
+public Product getProductById(Integer id)throws InvalidProductIDException{
+	    for (Product product : data) {
+	        if (product.getId()==(id)) { // Using equals() for Integer comparison
+	            return product;
+	        }
+	    }
+	    throw new InvalidProductIDException("Product with ID " + id + " not found");
+	}
+-----------------------------------------------------------------------==================================================
+
+package com.unext.RestCrudDemo.Controller;
+
+import java.net.*;
+import java.util.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.unext.RestCrudDemo.Exception.InvalidProductIDException;
+import com.unext.RestCrudDemo.Model.Product;
+import com.unext.RestCrudDemo.Service.ProductService;
+
+import jakarta.websocket.server.PathParam;
+ 
+
+ @RestController
+public class ProductController {
+   @Autowired
+   ProductService service;
+    
+   @GetMapping("/listall")
+    public List<Product> list() {
+        return service.listAllProducts();
+    }
+   @GetMapping("/{id}")
+   public ResponseEntity<?> getProductById(@PathVariable Integer id) {
+       try {
+           Product product = service.getProductById(id);
+           return ResponseEntity.ok(product);
+       } 
+       catch (InvalidProductIDException ex) {
+           Map<String, String> errorResponse = new HashMap<>();
+           errorResponse.put("error", "Product Not Found");
+           errorResponse.put("message", ex.getMessage());
+           return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+       }
+   }
+   
+ //@GetMapping("/getproduct/{id}")
+    @RequestMapping(value = "/getproduct/{id}", method=RequestMethod.GET )
+        public Product get(@PathVariable("id") int i) {
+    	System.out.println(i);
+    	Product product=null;
+    
+    	try {
+       product = service.get(i);
+    	}
+    	catch(InvalidProductIDException e)
+    	{
+    		System.out.println(e);
+    	}
+        return product;
+      
+    }
+  
+  @RequestMapping(value = "/addproduct1", method = RequestMethod.POST)
+//@PostMapping("/addproduct")
+ 
+        public String add(@RequestBody Product product)  {
+        boolean b=service.add(product);
+       if(b)
+       {
+      return   "your product added successfully";
+       }
+       else
+    	   return "sorry";
+    }
+   
+  @PutMapping("/updateProdutById/{id}/{name}")
+  public Product updateProduct(@PathVariable("id") int id,@PathVariable("name") String name)
+  {
+	  return service.updateProduct1(id, name);
+  }
+  
+  
+  @PutMapping("/update/{id}/{name}")
+  public ResponseEntity<Product> updateProduct1(@PathVariable("id") int id,@PathVariable("name") String name) {
+      Product p = service.updateProduct1(id, name);
+      return new ResponseEntity<>(p, HttpStatus.OK);
+  }
+    
+   
+ 
+   // @DeleteMapping("/deleteproduct/{id}")
+  @RequestMapping(value = "/deleteproduct/{id}", method = RequestMethod.DELETE)
+    public boolean delete(@PathVariable("id") int id) {
+        if (service.deleteAll(id)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
+-------------------------------------------------------
+package com.unext.RestCrudDemo.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.unext.RestCrudDemo.Exception.InvalidProductIDException;
+import com.unext.RestCrudDemo.Model.Product;
+ @Service
+public class ProductService {
+    
+    private static List<Product> data = new ArrayList();
+     
+    static {
+        data.add(new Product(1, "iPhone X", 999.99f));
+        data.add(new Product(2, "XBOX 360", 329.50f));     
+    }
+     
+    public ProductService() {
+         
+    }
+     
+  
+     
+    public List<Product> listAllProducts() {
+        
+    	return data;
+    }
+     
+    public boolean add(Product product) {
+
+        data.add(product);
+    
+        return true;
+    }
+     
+    public Product get(int id) throws InvalidProductIDException{
+
+    	boolean flag=false;
+    	for(Product p1:data)
+    	{
+    		if(p1.getId()==id)
+    		{ flag=true;
+    			return p1;
+    		
+    		}
+    	}
+    	if(flag==false)
+    	{
+    		throw new InvalidProductIDException("product Id doesn't exist");
+    		//return false;
+    	}
+    	
+    	return null;
+    	
+    }
+    	
+    
+     
+    public boolean deleteAll(int id) {
+
+    	List<Product> list=new ArrayList();
+  	boolean flag=false;
+  	for(Product l:data)//2
+     {
+  	   if(l.getId()==id)
+   	   {
+  		  // data.remove(id);
+    		 list.add(l);
+    		   
+    	   }
+           
+        }
+       
+    flag=data.removeAll(list);
+    System.out.println(flag);
+    return flag;
+    
+    }
+   public Product updateProduct1(int id,String name) 
+   {
+	   Product p1=null;
+	   for(Product p:data)
+	   {
+		   if(p.getId()==id)
+		   {
+			   p.setName(name);
+			   p1=p;
+		   }
+	   }
+	   return p1;
+   }
+   public Product getProductById(Integer id)throws InvalidProductIDException{
+	    for (Product product : data) {
+	        if (product.getId()==(id)) { // Using equals() for Integer comparison
+	            return product;
+	        }
+	    }
+	    throw new InvalidProductIDException("Product with ID " + id + " not found");
+	}
+    
+     
+   
+}
+---------------------------------------------------------
+package com.unext.RestCrudDemo.Exception;
+
+public class InvalidProductIDException extends Exception {
+
+	public InvalidProductIDException(String msg) {
+		super(msg);
+	}
+
+}
+---------------------------------------------------
+package com.unext.RestCrudDemo.Model;
+
+public class Product {
+    private Integer id;
+    private String name;
+    private float price;
+ 
+    public Product(int id) {
+        this.id = id;
+    }
+     public Product() {
+    }
+ 
+    public Product(int id, String name, float price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    }
+ 
+       
+ 
+    public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", price=" + price + "]";
+	}
+}
+
+------------------------------------------------------------------------====================================================================================
+
+
+
+package com.service;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class ArithmeticService {
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+}
+package com.controller;
+
+import com.service.ArithmeticService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class CalculatorController {
+
+    private ArithmeticService arithmeticService;
+
+    @Autowired
+    public CalculatorController(ArithmeticService arithmeticService) {
+        this.arithmeticService = arithmeticService;
+    }
+
+    public int addNumbers(int a, int b) {
+        return arithmeticService.add(a, b);
+    }
+
+    public int subtractNumbers(int a, int b) {
+        return arithmeticService.subtract(a, b);
+    }
+}
+package com.utils;
+
+import com.controller.CalculatorController;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class App {
+    public static void main(String[] args) {
+        ApplicationContext context = new AnnotationConfigApplicationContext("com");
+
+        CalculatorController calculator = context.getBean(CalculatorController.class);
+
+        int additionResult = calculator.addNumbers(10, 5);
+        int subtractionResult = calculator.subtractNumbers(10, 5);
+
+        System.out.println("Addition Result: " + additionResult);
+        System.out.println("Subtraction Result: " + subtractionResult);
+    }
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------
+jpa********
+===============================================================================
+
+
+
+package com.example.SpringJPAQuery.repo;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+
+import com.example.SpringJPAQuery.model.Student;
+import jakarta.transaction.Transactional;
+
+@Repository
+public interface StudentRepository extends JpaRepository<Student,Long> 
+{
+            
+
+}
+
+--------------------------------------------------------------------------==========================================
+appilcation.properties
+------------------------
+#server.port=8090
+#spring.datasource.url=jdbc:h2:~/employeesdb4
+#spring.datasource.username=sa
+#spring.datasource.password=sa1234
+#spring.jpa.show-sql=true
+#spring.jpa.hibernate.ddl-auto=update
+#spring.jpa.properties.hibernate.format_sql=true
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.H2Dialect
+
+server.port=8090
+spring.datasource.url = jdbc:postgresql://localhost:5432/walmart2
+spring.datasource.username = postgres
+spring.datasource.password = Shreemb2004r
+spring.jpa.hibernate.ddl-auto = update
+spring.jpa.properties.hibernate.dialect= org.hibernate.dialect.PostgreSQLDialect
+#spring.main.allow-circular-references=true
+spring.jpa.show-sql=true
+
+--------------------------------------------------------------------------------------------------====================================================
+@GetMapping("/getStudent")
+	public List<Student> getall() {
+		return service.getStudent();
+	}
+	@GetMapping("/getStudent/{id}")
+    public Optional<Student> getStudenttById(@PathVariable int id) {
+        return service.getStudentById(id);  
+    }
+
+
+--------------------------------------------------------==========================================
+public List<Student> getStudent() {
+	// TODO Auto-generated method stub
+	return repo.findAll();
+}
+public Optional<Student> getStudentById(long id) {
+	// TODO Auto-generated method stub
+	return repo.findById(id);
+}
+-----------------------------------------------------------------==============================================================================
+	@GetMapping("/name/{name}")
+	public List <Student> findByName(@PathVariable String name) {
+		return service.findbyfirstName(name);
+		
+	}
+
+
+
+
+public List<Student> findbyfirstName(String name) {
+	// TODO Auto-generated method stub
+	return repo.findByfirstName(name);
+}
+
+-----------------------------------------------------------------------------------===================================================
+import com.example.SpringJPAQuery.model.Student;
+import jakarta.transaction.Transactional;
+
+@Repository
+public interface StudentRepository extends JpaRepository<Student,Long> 
+{
+	      
+	     public  List<Student> findByfirstName(String name);
+@Query("select u from Student u where u.firstName=?1 and emailId=?2")
+          Student  findByFirstNameAndMail(String name,String mail);
+@Modifying
+ @Transactional
+  @Query(
+		value="update student set first_name=?1 where email_id=?2",nativeQuery=true)
+public int updateFirstNameBasedOnEmail(String firstName,String emailId);
+    
+
+}
+
+----------------------------------------------------------------------------==========================================================================
+
+employee class
+-------------------------
+package com.example.SpringDataJPADemo1.entity;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
+
+@Entity
+public class Employee {
+
+	@Id
+	Long eid;
+	String name;
+	int salary;
+	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	Address address;
+	public Long getEid() {
+		return eid;
+	}
+	public void setEid(Long eid) {
+		this.eid = eid;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getSalary() {
+		return salary;
+	}
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	@Override
+	public String toString() {
+		return "Employee [eid=" + eid + ", name=" + name + ", salary=" + salary + ", address=" + address + "]";
+	}
+	
+	
+}
+------------------------------
+package com.example.SpringDataJPADemo1.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+public class Address {
+
+	@Id
+	Long aid;
+	String city;
+	String state;
+	public Long getAid() {
+		return aid;
+	}
+	public void setAid(Long aid) {
+		this.aid = aid;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
+	}
+	@Override
+	public String toString() {
+		return "Address [aid=" + aid + ", city=" + city + ", state=" + state + "]";
+	}
+	
+	
+}
+------------------------------------------------
+package com.example.SpringDataJPADemo1.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.example.SpringDataJPADemo1.entity.Address;
+
+
+
+@Repository
+public interface AddressRepository extends JpaRepository<Address,Long> {
+
+}
+-------------
+package com.example.SpringDataJPADemo1.repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.example.SpringDataJPADemo1.entity.Employee;
+
+
+
+@Repository
+public interface EmployeeRepository extends JpaRepository<Employee,Long>{
+
+}
+----------------------------------------
+package com.example.SpringDataJPADemo1.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import java.util.Optional;
+import com.example.SpringDataJPADemo1.entity.Employee;
+import com.example.SpringDataJPADemo1.repository.EmployeeRepository;
+
+
+
+
+@RestController
+public class EmployeeController {
+
+	@Autowired
+	private EmployeeRepository repo;
+	@GetMapping("/hi")
+	public String sayhello()
+	{
+		return "hello world-bhagya";
+	}
+	
+	@PostMapping("/saveemployee")
+	public ResponseEntity<String> addAllEmployees(@RequestBody Employee empdata)
+	{
+		repo.save(empdata);
+		return ResponseEntity.ok("emp details saved");
+	}
+	@PostMapping("/saveemployeesList")
+	public ResponseEntity<String> addAllEmployees(@RequestBody List<Employee> empdata)
+	{
+		repo.saveAll(empdata);
+		return ResponseEntity.ok("emp List details saved");
+	}
+	
+	@GetMapping("/getDetailsById/{eid}")
+	public Employee getEmployeeDetailsById(@PathVariable("eid") Long eid)
+	{
+		Employee e=null;
+		Optional<Employee> emp=repo.findById(eid);
+		if(emp.isPresent())
+		{
+			e=emp.get();
+			return e;
+		}
+		else
+			return e;
+	}
+		
+	}
+
+-----------------------------------------------
+server.port=8086
+#spring.datasource.driverClassName=com.mysql.cj.jdbc.Driver
+#spring.datasource.url=jdbc:mysql://localhost:3306/resttestdb1
+#spring.datasource.username=root
+# spring.datasource.password=Shreemb2004r
+
+#spring.datasource.driverClassName=
+spring.datasource.url=jdbc:postgresql://localhost:5432/walmartempdb1
+spring.datasource.username=postgres
+ spring.datasource.password=Shreemb2004r
+
+#Hibernate Configurations
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.generate-ddl=true
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update
+
+===============================================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------------
+
+
+class Population {
+HashMap<String, Integer> dataList = new HashMap<>();
+public String maxPopulation() {
+String maxCountry = " ";
+int maxPopulation = 0;
+for (Map.Entry<String, Integer> entry : dataList.entrySet()) {
+if (entry.getValue() > maxPopulation) {
+maxPopulation = entry.getValue();
+maxCountry = entry.getKey();
+}
+}
+return maxCountry;
+}
+public int totalPopulation() {
+int total = 0;
+for (int population : dataList.values()) {
+total += population;
+}
+return total;
+}
+}
+public class Main {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+Population population = new Population();
+for (int i = 0; i < 3; i++) {
+String country = scanner.next();
+int pop = scanner.nextInt();
+population.dataList.put(country, pop);
+}
+System.out.println(population.maxPopulation());
+System.out.println(population.totalPopulation());
+}
+}
+=============================
+class RoomTypeNotAvailableException extends Exception {
+public RoomTypeNotAvailableException(String message) {
+super(message);
+}
+}
+class InsufficientBalanceException extends Exception {
+public InsufficientBalanceException(String message) {
+super(message);
+}
+}
+class InvalidStayDurationException extends Exception {
+public InvalidStayDurationException(String message) {
+super(message);
+}
+}
+class HotelBooking {
+private double balance;
+private static final double ROOM_COST = 100.0;
+private static final String[] AVAILABLE_ROOMS = {"Single", "Double", "Suite"};
+public HotelBooking(double balance) {
+this.balance = balance;
+}
+public boolean isRoomTypeAvailable(String roomType) {
+for (String room : AVAILABLE_ROOMS) {
+if (room.equalsIgnoreCase(roomType)) {
+return true;
+}
+}
+return false;
+}
+public double getBalance() {
+return balance;
+}
+public void bookRoom(String roomType, double payment, int days)
+throws RoomTypeNotAvailableException, InsufficientBalanceException, InvalidStayDurationException {
+if (!isRoomTypeAvailable(roomType)) {
+throw new RoomTypeNotAvailableException("Room type " + roomType + " is not available.");
+}
+if (days <= 0) {
+throw new InvalidStayDurationException("Stay duration must be positive. Invalid stay: " + days);
+}
+double totalCost = ROOM_COST * days;
+if (payment < totalCost) {
+throw new InsufficientBalanceException("Payment of " + payment + " is insufficient. Total cost is " + totalCost);
+}
+balance -= totalCost;
+System.out.println("Room booked successfully! Remaining balance: Rs " + balance);
+}
+}
+public class Main {
+public static void main(String[] args) {
+Scanner scanner = new Scanner(System.in);
+double balance = scanner.nextDouble();
+scanner.nextLine();
+String roomType = scanner.nextLine();
+double payment = scanner.nextDouble();
+int days = scanner.nextInt();
+HotelBooking booking = new HotelBooking(balance);
+try {
+booking.bookRoom(roomType, payment, days);
+} catch (RoomTypeNotAvailableException | InsufficientBalanceException | InvalidStayDurationException e) {
+System.out.println(e.getMessage());
+}
+scanner.close();
+}
+}
+=============
+1 a)
+import java.util.Scanner;
+
+public class Main {
+    public static boolean isPrime(int num) {
+        if (num <= 1) return false;
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int num1 = scanner.nextInt();
+        int num2 = scanner.nextInt();
+        scanner.close();
+
+        if (num1 == num2) {
+            System.out.println(0);
+            return;
+        }
+
+        boolean isNum1Prime = isPrime(num1);
+        boolean isNum2Prime = isPrime(num2);
+
+        if (isNum1Prime && isNum2Prime) {
+            System.out.println(Math.max(num1, num2));
+        } else {
+            System.out.println(Math.min(num1, num2));
+        }
+    }
+}
+
+
+===============================================================================
+2a)
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        float physics = scanner.nextFloat();
+        float chemistry = scanner.nextFloat();
+        float mathematics = scanner.nextFloat();
+        scanner.close();
+        if (physics < 0 || physics > 100 || chemistry < 0 || chemistry > 100 || mathematics < 0 || mathematics > 100) {
+            System.out.println("INVALIDMARKS");
+            return;
+        }
+        float averageMarks = (physics + chemistry + mathematics) / 3;
+        if (averageMarks >= 70) {
+            System.out.println("DISTINCTION");
+        } else if (averageMarks >= 60) {
+            System.out.println("FIRST");
+        } else if (averageMarks >= 50) {
+            System.out.println("SECOND");
+        } else if (averageMarks >= 40) {
+            System.out.println("THIRD");
+        } else {
+            System.out.println("FAIL");
+        }
+    }
+}
+===========================================================================
+
+3a)
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int a = scanner.nextInt();
+        int b = scanner.nextInt();
+        int c = scanner.nextInt();
+        scanner.close();
+        if (a <= 0 || b <= 0 || c <= 0 || !(a > b && b > c)) {
+            System.out.println("INVALID_INPUT");
+            return;
+        }
+        if ((a * a) == (b * b + c * c)) {
+            System.out.println("RIGHT ANGLE");
+        } else {
+            System.out.println("NOT RIGHT ANGLE");
+        }
+    }
+}
+
+============================================================================
+ 4a)
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String args[]) {
+        Scanner scanner = new Scanner(System.in);
+        
+        int no = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline
+
+        // Check for invalid input
+        if (no <= 0) {
+            System.out.println("INVALID INPUT");
+            return;
+        }
+
+        int count = 0;
+
+        // Process input and count "Sales" occurrences
+        for (int i = 0; i < no; i++) {
+            String input = scanner.nextLine().trim();
+            if (input.equalsIgnoreCase("Sales")) {
+                count++;
+            }
+        }
+        
+        scanner.close();
+
+        // Output result
+        if (count > 0) {
+            System.out.println("Designations in Sales Department " + count);
+        } else {
+            System.out.println("No designations in Sales department");
+        }
+    }
+}
+===============================================================
+5a)
+import java.util.Scanner;
+
+class Voter {
+    public static void checkEligibility(int age) {
+        if (age >= 18) {
+            System.out.println("Congratulations! You are eligible for voting");
+        } else {
+            System.out.println("Sorry! Not eligible for Voting. You have to wait for " + (18 - age) + " years");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        if (scanner.hasNextInt()) {
+            int age = scanner.nextInt();
+            checkEligibility(age);
+        } else {
+            System.out.println("INVALID INPUT");
+        }
+
+        scanner.close();
+    }
+}
+====================================================================
+
+6a)
+
+import java.util.Scanner;
+
+class Person {
+    private String name;
+    private int age;
+    private char gender;
+    public Person(String name, int age, char gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+    public String getName() { return name; }
+    public int getAge() { return age; }
+    public char getGender() { return gender; }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person person = (Person) obj;
+        return age == person.age && gender == person.gender && name.equals(person.name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String name1 = scanner.next();
+        int age1 = scanner.nextInt();
+        char gender1 = scanner.next().charAt(0);
+        Person person1 = new Person(name1, age1, gender1);
+        String name2 = scanner.next();
+        int age2 = scanner.nextInt();
+        char gender2 = scanner.next().charAt(0);
+        Person person2 = new Person(name2, age2, gender2);
+
+        scanner.close();
+        if (person1.equals(person2)) {
+            System.out.println("Same");
+        } else {
+            System.out.println("Different");
+        }
+    }
+}
+===========================================================
+
+7a)
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int units = sc.nextInt();
+        sc.close();
+        if (units < 0) {
+            System.out.println("INVALID INPUT");
+        } else {
+            System.out.println(calculateElectricityBill(units));
+        }
+    }
+
+    static double calculateElectricityBill(int units) {
+        double billpay = 0.0;
+
+        if (units <= 30)
+            billpay = units * 3.5;
+        else if (units <= 100)
+            billpay = 30 * 3.5 + (units - 30) * 4;
+        else
+            billpay = 30 * 3.5 + 70 * 4 + (units - 100) * 5;
+
+        return billpay;
+    }
+}
+=====================================================================
+
+8a)
+import java.util.Scanner;
+
+class Student {
+    String name;
+    String usn;
+    String college;
+    int cgpa;
+
+    // Constructor to initialize the Student object
+    public Student(String name, String usn, String college, int cgpa) {
+        this.name = name;
+        this.usn = usn;
+        this.college = college;
+        this.cgpa = cgpa;
+    }
+}
+
+class StudentImplementation {
+    public Student getStudentInfo(String str) {
+        String[] parts = str.split("[@#-]");
+        String name = parts[0];
+        String usn = parts[1];
+        String college = parts[2];
+        int cgpa = Integer.parseInt(parts[3]);
+
+        return new Student(name, usn, college, cgpa);
+    }
+    public String getStudentSection(Student s) {
+        String lastThreeDigits = s.usn.substring(s.usn.length() - 3); 
+        int usnNumber = Integer.parseInt(lastThreeDigits);
+
+        if (usnNumber >= 1 && usnNumber <= 60) {
+            return "A";
+        } else if (usnNumber >= 61 && usnNumber <= 120) {
+            return "B";
+        } else if (usnNumber >= 121 && usnNumber <= 180) {
+            return "C";
+        } else {
+            return "Z";
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+        sc.close();
+
+        StudentImplementation impl = new StudentImplementation();
+        Student student = impl.getStudentInfo(input);
+        System.out.println(student.name);
+        System.out.println(student.usn);
+        System.out.println(student.college);
+        System.out.println(student.cgpa);
+        System.out.println(impl.getStudentSection(student));
+    }
+}
+========================================================================
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Integer> scores = new ArrayList<>();
+
+        // Reading 5 unique integers from user input
+        for (int i = 0; i < 5; i++) {
+            scores.add(sc.nextInt());
+        }
+        sc.close();
+
+        // Calling the method to remove max and min values
+        removeMaxMin(scores);
+
+        // Display the modified list
+        System.out.println(scores);
+    }
+
+    public static void removeMaxMin(ArrayList<Integer> scores) {
+        if (scores.size() < 2) {
+            return; // No removal possible if less than 2 elements
+        }
+
+        // Find max and min values
+        int maxVal = Collections.max(scores);
+        int minVal = Collections.min(scores);
+
+        // Remove all occurrences of max and min values
+        scores.removeIf(num -> num == maxVal || num == minVal);
+    }
+}
+=======================================================================================================================================================
+@RestController
+@RequestMapping("/products")
+public class ProductController {
+
+    @GetMapping("/{productId}")
+    public ResponseEntity<String> getProductById(@PathVariable String productId) {
+        return ResponseEntity.ok("Product details for ID: " + productId);
+    }
+}
+-------------------------------@RestController
+@RequestMapping("/inventory")
+public class InventoryController {
+
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @GetMapping("/check/{productId}")
+    public ResponseEntity<String> checkStock(@PathVariable String productId) {
+        // Fetch product details from Product Service
+        String productDetails = restTemplate.getForObject("http://product-service/products/" + productId, String.class);
+        return ResponseEntity.ok("Stock available for: " + productDetails);
+    }
+}
+
+==========================================================================================================================================================
+
+
+
+server:
+ port: 8765
+
+spring:
+  application:
+    name: zuul-cloud-gateway
+  
+
+  cloud:
+   gateway:
+      routes:
+      - id: user-service
+        uri: http://localhost:9002/users/
+        predicates:
+        - Path=/users/**
+        
+      - id: department-service
+        uri: http://localhost:9001/departments/ 
+        predicates:
+         - Path=/departments/**
+
+eureka:
+  client:
+    service-url:
+     defaultZone: http://localHost:8761/eureka
+    fetch-registry: true
+    register-with-eureka: true
+----------------------------------------------------------------------------------------=====================================================================
+end users,
+
+dependency in pom.xml
+
+<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.0.3</version>
+		</dependency>
+
+
+add swagger in the request
+
+-----------------------------------------------------------------------------------------====================================================================
+
+      
+
+
+
+
+
+
+
+
+
+
